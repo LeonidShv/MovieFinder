@@ -1,0 +1,43 @@
+:root {
+  --dark: #161b22;
+  --deep-dark: #0d1116;
+  --light: #f0f6fc;
+  --yellow: #ffeb3b;
+  --grey: #bdbdbd;
+  --orange: #ff9800;
+  --green: #44a047;
+
+  --white: #fff;
+  --grey-light: #f9f9f9;
+}
+
+:root .body--dark {
+  --bg-app: var(--deep-dark);
+  --bg-block: var(--dark);
+  --text-color: var(--light);
+  --brand-highlight: var(--yellow);
+  --disabled-block: var(--grey);
+  --shadow: 0px 0.5px 0px 0px rgba(255, 255, 255, 0.4);
+  --completed: var(--green);
+}
+
+:root .body--light {
+  --bg-app: var(--white);
+  --bg-block: var(--grey-light);
+  --text-color: var(--dark);
+  --brand-highlight: var(--orange);
+  --disabled-block: var(--grey);
+  --shadow: 0px 0.5px 0px 0px rgba(78, 77, 77, 0.4);
+  --shadow-header: 0px 0.5px 0px 0px rgba(78, 77, 77, 0.4);
+  --shadow-footer: 0px -0.5px 0px 0px rgba(78, 77, 77, 0.4);
+  --completed: var(--green);
+}
+:root {
+  --q-primary: var(--orange);
+}
+
+:root {
+  --header-height: 60px;
+  --footer-height: 60px;
+  --section-padding-block: 48px;
+}

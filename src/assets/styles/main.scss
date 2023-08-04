@@ -1,0 +1,31 @@
+@import '@/assets/styles/_variables.scss';
+@import '@/assets/styles/_reset.scss';
+@import '@/assets/styles/_modifier.scss';
+
+p,
+h1,
+h2,
+h3,
+li {
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 14px;
+}
+
+body {
+  background-color: var(--bg-app);
+}
