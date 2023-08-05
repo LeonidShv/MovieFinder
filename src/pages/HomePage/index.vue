@@ -1,6 +1,5 @@
 <template>
   <main class="HomePage">
-
     <div class="HomePage-block">
       <h1 class="HomePage-title">Unlimited movies, series and other content</h1>
       <div class="HomePage-controls">
@@ -14,13 +13,12 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRouter } from "vue-router";
+import { useGlobalStore } from "@/stores/global";
 
 import { Search } from "@element-plus/icons-vue";
 
 import VInput from "@/components/VInput/index.vue";
 import VButton from "@/components/VButton/index.vue";
-
-import { useGlobalStore } from "@/stores/global";
 
 const router = useRouter();
 
@@ -53,7 +51,7 @@ async function getMovies() {
     position: relative;
     z-index: 1;
 
-    @include bg-dark-element
+    @include bg-dark-element;
   }
 
   &-controls {

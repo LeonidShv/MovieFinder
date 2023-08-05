@@ -27,11 +27,6 @@ const props = defineProps({
     default: false,
   },
 });
-
-function test(value) {
-  console.log(value);
-  emit("update:modelValue", props.modelValue);
-}
 </script>
 
 <style lang="scss" scoped></style>

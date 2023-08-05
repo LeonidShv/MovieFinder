@@ -7,14 +7,10 @@
 </template>
 
 <script setup>
-import { useGlobalStore } from '@/stores/global'
+import { useGlobalStore } from "@/stores/global";
 import { ref, onMounted, computed } from "vue";
 
 import VCarousel from "@/components/VCarousel/index.vue";
-
-onMounted(() => {
-  console.log(useGlobalStore()?.movies);
-});
 </script>
 
 <style lang="scss" scoped>

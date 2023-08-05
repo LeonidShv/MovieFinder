@@ -28,7 +28,7 @@ import { RouterView } from "vue-router";
 import { useGlobalStore } from "@/stores/global";
 
 onMounted(() => {
-  useGlobalStore().getMoviesFromStorage()
+  useGlobalStore().getMoviesFromStorage();
 });
 </script>
 
