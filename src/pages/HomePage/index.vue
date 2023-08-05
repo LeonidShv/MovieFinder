@@ -1,24 +1,64 @@
 <template>
   <main class="HomePage">
-    <h1>Hello</h1>
-    <ElButton>I am ElButton</ElButton>
+
+    <div class="HomePage-block">
+      <h1 class="HomePage-title">Unlimited movies, series and other content</h1>
+      <div class="HomePage-controls">
+        <VInput v-model="movieTitle" placeholder="Film title" :icon="Search" />
+        <VButton @click="getMovies">Default</VButton>
+      </div>
+    </div>
   </main>
 </template>
 
 <script setup>
-import api from "@/api";
 import { ref, onMounted, computed } from "vue";
-import { ElButton } from "element-plus";
-import "element-plus/es/components/button/style/css";
+import { useRouter } from "vue-router";
+
+import { Search } from "@element-plus/icons-vue";
+
+import VInput from "@/components/VInput/index.vue";
+import VButton from "@/components/VButton/index.vue";
+
+import { useGlobalStore } from "@/stores/global";
+
+const router = useRouter();
 
 onMounted(() => {
   // const response = api.getMovie();
   console.log("response");
 });
+
+const movieTitle = ref("");
+
+async function getMovies() {
+  await useGlobalStore().getMovies();
+  router.push({ name: "movies" });
+}
 </script>
 
 <style lang="scss" scoped>
 .HomePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: url(@/assets/images/homeBg.webp);
+
+  &-title {
+    margin-bottom: 16px;
+  }
+
+  &-block {
+    padding: 16px;
+    position: relative;
+    z-index: 1;
+
+    @include bg-dark-element
+  }
+
+  &-controls {
+    display: flex;
+    gap: 16px;
+  }
 }
 </style>
