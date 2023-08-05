@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: "/movies",
       name: "movies",
-      component: () => import("@/pages/MiviesPage/index.vue"),
+      component: () => import("@/pages/MoviesPage/index.vue"),
     },
     {
       path: "/components",

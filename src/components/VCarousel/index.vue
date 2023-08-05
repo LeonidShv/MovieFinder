@@ -6,8 +6,8 @@
       class="Carousel-item"
     >
       <!-- <img :src="Poster" alt=""> -->
-      <VSkeleton :loading="true" type="carousel" />
-      <img src="" class="Carousel-itemImg" />
+      <VSkeleton :loading="!Title" type="carousel" />
+      <img v-if="Poster !== 'N/A' && Poster" :src="Poster" class="Carousel-itemImg" />
       <div class="Carousel-body">
         <h3>{{ Title }}</h3>
         <p>{{ Director }}</p>
@@ -18,20 +18,18 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { ElCarousel, ElCarouselItem } from "element-plus";
 import VSkeleton from "@/components/VSkeleton/index.vue";
 import "element-plus/es/components/carousel/style/css";
 import "element-plus/es/components/carousel-item/style/css";
 
-// defineProps({
-//   movies: {
-//     type: Array,
-//     default: () => [1,2,3]
-//   },
-// })
+defineProps({
+  movies: {
+    type: Array,
+    default: () => [1,2,3]
+  },
+})
 
-const movies = ref([1, 2, 3]);
 </script>
 
 <style lang="scss" scoped>
@@ -64,17 +62,7 @@ const movies = ref([1, 2, 3]);
     z-index: 2;
     padding: 8px 8px 32px;
 
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-block);
-      opacity: 0.5;
-    }
+    @include bg-dark-element
   }
 }
 </style>
