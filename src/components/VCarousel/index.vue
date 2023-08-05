@@ -1,33 +1,26 @@
 <template>
-   <ElCarousel :interval="4000" type="card" height="300px" class="Carousel">
-    <ElCarouselItem 
-      v-for="({ Title, Poster, Director, Year, imdbID }) in movies"
+  <ElCarousel :interval="4000" type="card" height="300px" class="Carousel">
+    <ElCarouselItem
+      v-for="{ Title, Poster, Director, Year, imdbID } in movies"
       :key="imdbID"
       class="Carousel-item"
     >
       <!-- <img :src="Poster" alt=""> -->
-      <VSkeleton 
-        :loading="true"
-        type="carousel"
-      />
-      <img
-        src=""
-        class="Carousel-itemImg"
-      />
-      <div class="Carousel-body">  
+      <VSkeleton :loading="true" type="carousel" />
+      <img src="" class="Carousel-itemImg" />
+      <div class="Carousel-body">
         <h3>{{ Title }}</h3>
         <p>{{ Director }}</p>
         <p>{{ Year }}</p>
       </div>
     </ElCarouselItem>
-    
   </ElCarousel>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { ref } from "vue";
 import { ElCarousel, ElCarouselItem } from "element-plus";
-import VSkeleton from "@/components/VSkeleton/index.vue"
+import VSkeleton from "@/components/VSkeleton/index.vue";
 import "element-plus/es/components/carousel/style/css";
 import "element-plus/es/components/carousel-item/style/css";
 
@@ -38,12 +31,10 @@ import "element-plus/es/components/carousel-item/style/css";
 //   },
 // })
 
-const movies = ref([1,2,3])
-
+const movies = ref([1, 2, 3]);
 </script>
 
 <style lang="scss" scoped>
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
@@ -72,7 +63,7 @@ const movies = ref([1,2,3])
     position: relative;
     z-index: 2;
     padding: 8px 8px 32px;
-    
+
     &::after {
       content: "";
       position: absolute;
@@ -82,7 +73,7 @@ const movies = ref([1,2,3])
       width: 100%;
       height: 100%;
       background: var(--bg-block);
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 }

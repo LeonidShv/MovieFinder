@@ -25,12 +25,12 @@ const props = defineProps({
   value: {
     type: Boolean,
     default: false,
-  }
+  },
 });
 
 function test(value) {
   console.log(value);
-  emit('update:modelValue', props.modelValue)
+  emit("update:modelValue", props.modelValue);
 }
 </script>
 

@@ -18,7 +18,6 @@
       :inActiveIcon="Sunny"
     />
     <p>{{ isDark }}</p>
-
   </section>
 </template>
 
@@ -29,7 +28,6 @@ import VCarousel from "@/components/VCarousel/index.vue";
 import VInput from "@/components/VInput/index.vue";
 import VSwitch from "@/components/VSwitch/index.vue";
 
-
 import { Calendar, Search, Sunny, Moon } from "@element-plus/icons-vue";
 
 const movies = ref([
@@ -38,28 +36,28 @@ const movies = ref([
     Poster: "Poster 1",
     Year: "Year 1",
     imdbID: "imdbID1",
-    Director: "Director1"
+    Director: "Director1",
   },
   {
     Title: "title 2",
     Poster: "Poster 2",
     Year: "Year 2",
     imdbID: "imdbID2",
-    Director: "Director2"
+    Director: "Director2",
   },
   {
     Title: "title 3",
     Poster: "Poster 3",
     Year: "Year 3",
     imdbID: "imdbID3",
-    Director: "Director3"
+    Director: "Director3",
   },
   {
     Title: "title 4",
     Poster: "Poster 4",
     Year: "Year 4",
     imdbID: "imdbID4",
-    Director: "Director4"
+    Director: "Director4",
   },
 ]);
 

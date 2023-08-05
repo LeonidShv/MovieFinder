@@ -1,30 +1,27 @@
 <template>
-     <el-input
-        @update:model-value="(value) => $emit('update:v-model', value)"
-        :placeholder="placeholder"
-        :suffix-icon="icon"
-      />
+  <el-input
+    @update:model-value="(value) => $emit('update:v-model', value)"
+    :placeholder="placeholder"
+    :suffix-icon="icon"
+  />
 </template>
 
 <script setup>
 import { ElInput } from "element-plus";
 import "element-plus/es/components/input/style/css";
 
-defineEmits(['update:v-model'])
+defineEmits(["update:v-model"]);
 
 defineProps({
   placeholder: {
     type: String,
-    default: ''
+    default: "",
   },
   icon: {
     type: Object,
-    default: () => {}
+    default: () => {},
   },
-})
-
+});
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

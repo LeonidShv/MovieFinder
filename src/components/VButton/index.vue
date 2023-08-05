@@ -1,5 +1,5 @@
 <template>
-     <ElButton>Default</ElButton>
+  <ElButton>Default</ElButton>
 </template>
 
 <script setup>
@@ -9,16 +9,13 @@ import "element-plus/es/components/button/style/css";
 defineProps({
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   type: {
     type: String,
-    default: ''
-  }
-})
-
+    default: "",
+  },
+});
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

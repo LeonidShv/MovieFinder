@@ -43,10 +43,10 @@ defineProps({
 
   &-body {
     width: 100%;
-      position: absolute;
-      bottom: 20px;
-      z-index: 2;
-      padding: 8px 8px 32px;
+    position: absolute;
+    bottom: 20px;
+    z-index: 2;
+    padding: 8px 8px 32px;
 
     .el-skeleton__item.el-skeleton__text {
       background: linear-gradient(

@@ -1,5 +1,5 @@
 <template>
-<header class="header">
+  <header class="header">
     <p class="header-logo">Movie<b class="highlight">Finder</b></p>
 
     <!-- <VToggle
@@ -16,7 +16,9 @@
   <footer class="footer">
     <p>© Copyright <b>2023</b></p>
 
-    <p><strong>Movie<b class="highlight">Finder</b></strong></p>
+    <p>
+      <strong>Movie<b class="highlight">Finder</b></strong>
+    </p>
   </footer>
 </template>
 

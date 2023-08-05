@@ -11,8 +11,8 @@ const router = createRouter({
     {
       path: "/components",
       name: "components",
-      component: () => import("@/pages/Components/index.vue")
-    }
+      component: () => import("@/pages/Components/index.vue"),
+    },
   ],
 });
 
