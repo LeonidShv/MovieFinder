@@ -23,7 +23,13 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { onMounted } from "vue";
+import { RouterView } from "vue-router";
+import { useGlobalStore } from "@/stores/global";
+
+onMounted(() => {
+  useGlobalStore().getMoviesFromStorage()
+});
 </script>
 
 <style lang="scss" scoped>
