@@ -8,6 +8,7 @@
           @keyup.enter="getMovies"
           placeholder="Film title"
           :icon="Search"
+          class="HomePage-search"
         />
         <VButton @click="getMovies">Search</VButton>
       </div>
@@ -55,6 +56,10 @@ async function getMovies() {
   &-controls {
     display: flex;
     gap: 16px;
+  }
+
+  &-search {
+    --el-text-color-placeholder: var(--border);
   }
 }
 </style>

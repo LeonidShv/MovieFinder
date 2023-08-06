@@ -66,7 +66,6 @@ const input = ref("");
 const isDark = ref(false);
 
 function test(v) {
-  console.log("ss", v);
   isDark.value = v;
 }
 </script>

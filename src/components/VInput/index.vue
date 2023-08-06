@@ -28,7 +28,6 @@ defineProps({
 <style lang="scss" scoped>
 .Input.el-input {
   --el-border-color: var(--border);
-  --el-text-color-placeholder: var(--border);
   --el-border-color-hover: var(--el-color-primary);
 }
 </style>

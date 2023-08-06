@@ -40,6 +40,7 @@ onMounted(async () => {
     isError.value = true;
   } finally {
     isLoading.value = false;
+    isError.value = !useGlobalStore()?.movies;
   }
 });
 

@@ -2,8 +2,7 @@ import { defineStore } from "pinia";
 import api from "@/api";
 export const useGlobalStore = defineStore("global", {
   state: () => ({
-    // TODO: movies
-    movies: [1, 2, 3],
+    movies: [],
     movie: {},
   }),
   getters: {},

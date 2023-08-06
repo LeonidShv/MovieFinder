@@ -8,7 +8,7 @@
     trigger="click"
   >
     <ElCarouselItem
-      v-for="{ Title, Poster, Director, Year, imdbID } in movies"
+      v-for="{ Title, Poster, Director, Year, imdbID } in moviesList"
       :key="imdbID"
       @click="onClick(imdbID)"
       class="Carousel-item"
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { ElCarousel, ElCarouselItem } from "element-plus";
 import VSkeleton from "@/components/VSkeleton/index.vue";
 import "element-plus/es/components/carousel/style/css";
@@ -38,10 +38,10 @@ import "element-plus/es/components/carousel-item/style/css";
 
 const emit = defineEmits(["onClick"]);
 
-defineProps({
+const props = defineProps({
   movies: {
     type: Array,
-    default: () => [1, 2, 3],
+    default: () => [],
   },
   isLoading: {
     type: Boolean,
@@ -49,6 +49,10 @@ defineProps({
   },
 });
 
+// INFO: moviesList for the skeleton component (loading)
+const moviesList = computed(() =>
+  props.movies.length ? props.movies : [1, 2, 3],
+);
 const isMobile = ref(false);
 
 onMounted(() => {

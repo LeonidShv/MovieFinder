@@ -21,6 +21,12 @@ const router = createRouter({
       props: true,
     },
     {
+      path: "/add-movie",
+      name: "addMovie",
+      component: () => import("@/pages/AddMoviePage/index.vue"),
+      props: true,
+    },
+    {
       path: "/components",
       name: "components",
       component: () => import("@/pages/Components/index.vue"),
