@@ -6,7 +6,7 @@
       ref="ruleFormRef"
       :model="ruleForm"
       :rules="rules"
-      label-width="120px"
+      label-width="72px"
       class="demo-ruleForm"
       size="default"
       status-icon
@@ -117,6 +117,8 @@ const submitForm = async (formEl) => {
         message: "You have added a movie successfully",
         type: "success",
       });
+
+      resetForm(formEl);
     } else {
       VNotification({
         title: "Error",
