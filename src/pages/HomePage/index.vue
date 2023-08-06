@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useGlobalStore } from "@/stores/global";
 
@@ -22,15 +22,10 @@ import VButton from "@/components/VButton/index.vue";
 
 const router = useRouter();
 
-onMounted(() => {
-  // const response = api.getMovie();
-  console.log("response");
-});
-
 const movieTitle = ref("");
 
 async function getMovies() {
-  await useGlobalStore().getMovies();
+  await useGlobalStore().getMovies(movieTitle.value);
   router.push({ name: "movies" });
 }
 </script>

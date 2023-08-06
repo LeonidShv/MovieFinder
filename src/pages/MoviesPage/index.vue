@@ -1,16 +1,22 @@
 <template>
   <section class="Movies">
-    <h1 class="Movies-title">Movies:</h1>
+    <h2 class="Movies-title">Movies</h2>
 
-    <VCarousel :movies="useGlobalStore()?.movies" />
+    <VCarousel :movies="useGlobalStore()?.movies" @onClick="goToMoviePage" />
   </section>
 </template>
 
 <script setup>
 import { useGlobalStore } from "@/stores/global";
-import { ref, onMounted, computed } from "vue";
+import { useRouter } from "vue-router";
 
 import VCarousel from "@/components/VCarousel/index.vue";
+
+const router = useRouter();
+
+function goToMoviePage(id) {
+  router.push({ name: "movie", params: { id } });
+}
 </script>
 
 <style lang="scss" scoped>

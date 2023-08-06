@@ -3,6 +3,7 @@
     <ElCarouselItem
       v-for="{ Title, Poster, Director, Year, imdbID } in movies"
       :key="imdbID"
+      @click="onClick(imdbID)"
       class="Carousel-item"
     >
       <!-- <img :src="Poster" alt=""> -->
@@ -27,12 +28,18 @@ import VSkeleton from "@/components/VSkeleton/index.vue";
 import "element-plus/es/components/carousel/style/css";
 import "element-plus/es/components/carousel-item/style/css";
 
+const emit = defineEmits(["onClick"]);
+
 defineProps({
   movies: {
     type: Array,
     default: () => [1, 2, 3],
   },
 });
+
+function onClick(id) {
+  emit("onClick", id);
+}
 </script>
 
 <style lang="scss" scoped>
