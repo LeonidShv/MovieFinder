@@ -2,24 +2,39 @@
 @import "@/assets/styles/_reset.scss";
 @import "@/assets/styles/_modifier.scss";
 
+@import "element-plus/theme-chalk/dark/css-vars";
+
 p,
 h1,
 h2,
 h3,
-li {
+li,
+a {
   color: var(--text-color);
 }
 
 h1 {
   font-size: 40px;
+
+  @include tablet-lower {
+    font-size: 32px;
+  }
 }
 
 h2 {
   font-size: 32px;
+
+  @include tablet-lower {
+    font-size: 24px;
+  }
 }
 
 h3 {
   font-size: 24px;
+
+  @include tablet-lower {
+    font-size: 16px;
+  }
 }
 
 p {
@@ -28,6 +43,23 @@ p {
 
 body {
   background-color: var(--bg-app);
+}
+
+.routerView {
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow: auto;
+  padding: 24px 80px;
+
+  @include tablet-lower {
+    padding: 12px 36px;
+  }
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .highlight {

@@ -1,16 +1,23 @@
 <template>
-  <ElCarousel :interval="4000" type="card" height="300px" class="Carousel">
+  <ElCarousel
+    :interval="3000"
+    :type="isMobile ? '' : 'card'"
+    arrow="always"
+    height="300px"
+    class="Carousel"
+    trigger="click"
+  >
     <ElCarouselItem
       v-for="{ Title, Poster, Director, Year, imdbID } in movies"
       :key="imdbID"
       @click="onClick(imdbID)"
       class="Carousel-item"
     >
-      <!-- <img :src="Poster" alt=""> -->
-      <VSkeleton :loading="!Title" type="carousel" />
+      <VSkeleton :loading="isLoading" type="carousel" />
       <img
-        v-if="Poster !== 'N/A' && Poster"
+        v-if="Poster !== 'N/A' && !isLoading"
         :src="Poster"
+        :alt="`Poster for the '${Title}' film`"
         class="Carousel-itemImg"
       />
       <div class="Carousel-body">
@@ -23,6 +30,7 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from "vue";
 import { ElCarousel, ElCarouselItem } from "element-plus";
 import VSkeleton from "@/components/VSkeleton/index.vue";
 import "element-plus/es/components/carousel/style/css";
@@ -35,6 +43,16 @@ defineProps({
     type: Array,
     default: () => [1, 2, 3],
   },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const isMobile = ref(false);
+
+onMounted(() => {
+  isMobile.value = window.screen.width <= 768;
 });
 
 function onClick(id) {
@@ -53,6 +71,7 @@ function onClick(id) {
 
 .Carousel {
   position: relative;
+  box-shadow: var(--shadow-carousel);
 
   &-item {
     display: flex;
@@ -70,9 +89,13 @@ function onClick(id) {
     width: 100%;
     position: relative;
     z-index: 2;
-    padding: 8px 8px 32px;
+    padding: 8px 8px 48px;
 
-    @include bg-dark-element;
+    @include bg-pseudo-element;
+  }
+
+  :deep(.el-carousel__button) {
+    background: var(--border);
   }
 }
 </style>

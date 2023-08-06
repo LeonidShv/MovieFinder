@@ -9,14 +9,15 @@ export const useGlobalStore = defineStore("global", {
   getters: {},
   actions: {
     async getMovies(movieTitle) {
-      try {
-        const response = await api.getMovies(movieTitle);
+      const moviesFromStorage = getMoviesFromStorage(movieTitle);
 
+      if (moviesFromStorage.length) {
+        this.movies = moviesFromStorage;
+      } else {
+        const response = await api.getMovies(movieTitle);
         this.movies = response?.data?.Search;
 
-        this.saveMoviesInStorage(response?.data?.Search);
-      } catch (e) {
-        console.error(e);
+        saveMoviesInStorage(movieTitle, response?.data?.Search);
       }
     },
 
@@ -25,13 +26,13 @@ export const useGlobalStore = defineStore("global", {
 
       this.movie = response.data;
     },
-
-    getMoviesFromStorage() {
-      this.movies = JSON.parse(localStorage.getItem("movies"));
-    },
-
-    saveMoviesInStorage(movies) {
-      localStorage.setItem("movies", JSON.stringify(movies));
-    },
   },
 });
+
+function getMoviesFromStorage(movieTitle) {
+  return JSON.parse(sessionStorage.getItem(`movies/${movieTitle}`) || "[]");
+}
+
+function saveMoviesInStorage(movieTitle, movies) {
+  sessionStorage.setItem(`movies/${movieTitle}`, JSON.stringify(movies));
+}

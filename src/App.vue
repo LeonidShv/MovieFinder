@@ -1,7 +1,6 @@
 <template>
   <header class="header">
-    <p class="header-logo">Movie<b class="highlight">Finder</b></p>
-
+    <VNavigation />
     <!-- <VToggle
       v-model="isDark"
       @update:model-value="changeTheme"
@@ -11,7 +10,9 @@
     /> -->
   </header>
 
-  <RouterView class="routerView" />
+  <!-- <section class="routerView"> -->
+  <RouterView />
+  <!-- </section> -->
 
   <footer class="footer">
     <p>© Copyright <b>2023</b></p>
@@ -23,16 +24,11 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 import { RouterView } from "vue-router";
-import { useGlobalStore } from "@/stores/global";
-
-onMounted(() => {
-  useGlobalStore().getMoviesFromStorage();
-});
+import VNavigation from "@/components/VNavigation/index.vue";
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
   display: flex;
   justify-content: space-between;
@@ -43,17 +39,16 @@ onMounted(() => {
   line-height: var(--header-height);
   background-color: var(--bg-block);
   box-shadow: var(--shadow-header);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
   // &-themeToggle {
   //   margin-left: auto;
   //   margin-right: 40px;
   // }
-}
 
-.routerView {
-  height: calc(100vh - var(--header-height) - var(--footer-height));
-  overflow: auto;
-  padding: 24px 80px;
+  @include tablet-lower {
+    padding: 0 36px;
+  }
 }
 
 .footer {
@@ -65,5 +60,9 @@ onMounted(() => {
   padding: 0 80px;
   line-height: var(--footer-height);
   box-shadow: var(--shadow-footer);
+
+  @include tablet-lower {
+    padding: 0 36px;
+  }
 }
 </style>

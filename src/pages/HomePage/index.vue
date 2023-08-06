@@ -1,10 +1,15 @@
 <template>
-  <main class="HomePage">
+  <main class="HomePage routerView">
     <div class="HomePage-block">
       <h1 class="HomePage-title">Unlimited movies, series and other content</h1>
       <div class="HomePage-controls">
-        <VInput v-model="movieTitle" placeholder="Film title" :icon="Search" />
-        <VButton @click="getMovies">Default</VButton>
+        <VInput
+          v-model="movieTitle"
+          @keyup.enter="getMovies"
+          placeholder="Film title"
+          :icon="Search"
+        />
+        <VButton @click="getMovies">Search</VButton>
       </div>
     </div>
   </main>
@@ -13,7 +18,6 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useGlobalStore } from "@/stores/global";
 
 import { Search } from "@element-plus/icons-vue";
 
@@ -25,8 +29,7 @@ const router = useRouter();
 const movieTitle = ref("");
 
 async function getMovies() {
-  await useGlobalStore().getMovies(movieTitle.value);
-  router.push({ name: "movies" });
+  router.push({ name: "movies", params: { id: movieTitle.value } });
 }
 </script>
 
@@ -46,7 +49,7 @@ async function getMovies() {
     position: relative;
     z-index: 1;
 
-    @include bg-dark-element;
+    @include bg-pseudo-element;
   }
 
   &-controls {

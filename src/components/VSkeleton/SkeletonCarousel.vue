@@ -47,16 +47,6 @@ defineProps({
     bottom: 20px;
     z-index: 2;
     padding: 8px 8px 32px;
-
-    .el-skeleton__item.el-skeleton__text {
-      background: linear-gradient(
-        90deg,
-        #cacaca 25%,
-        var(--el-skeleton-to-color) 37%,
-        #b3b4b5 63%
-      );
-      background-size: 400% 100%;
-    }
   }
 }
 </style>

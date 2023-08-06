@@ -1,12 +1,15 @@
 <template>
   <ElSkeleton class="Skeleton" :loading="loading" animated>
     <template #template>
-      <ElSkeletonItem variant="image" class="Skeleton-itemImg" />
       <div class="Skeleton-body">
-        <ElSkeletonItem variant="text" style="width: 50%" />
-        <div>
-          <ElSkeletonItem variant="text" style="margin-right: 16px" />
+        <ElSkeletonItem variant="image" class="Skeleton-itemImg" />
+        <div class="Skeleton-itemText">
+          <ElSkeletonItem variant="text" style="width: 50%" />
+          <ElSkeletonItem variant="text" />
           <ElSkeletonItem variant="text" style="width: 30%" />
+          <ElSkeletonItem variant="text" style="width: 50%" />
+          <ElSkeletonItem variant="text" />
+          <ElSkeletonItem variant="text" style="width: 50%" />
         </div>
       </div>
     </template>
@@ -30,33 +33,38 @@ defineProps({
 
 <style lang="scss" scoped>
 .Skeleton {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  &-itemImg {
-    position: absolute;
-    height: 100%;
+  &-body {
+    display: flex;
     width: 100%;
-    object-fit: cover;
+    gap: 24px;
+
+    @include tablet-lower {
+      flex-direction: column;
+    }
   }
 
-  &-body {
-    width: 100%;
-    position: absolute;
-    bottom: 20px;
-    z-index: 2;
-    padding: 8px 8px 32px;
+  &-itemText {
+    // .el-skeleton__item.el-skeleton__text {
+    //   background: linear-gradient(90deg, #e7e9ed 25%, #fff 37%, #d5d7db 63%);
+    //   background-size: 400% 100%;
+    // }
+  }
 
-    .el-skeleton__item.el-skeleton__text {
-      background: linear-gradient(
-        90deg,
-        #cacaca 25%,
-        var(--el-skeleton-to-color) 37%,
-        #b3b4b5 63%
-      );
-      background-size: 400% 100%;
+  &-itemImg {
+    width: 50%;
+    height: 460px;
+
+    @include tablet-lower {
+      width: 280px;
+      height: 430px;
     }
+  }
+
+  &-itemText {
+    display: flex;
+    flex-direction: column;
+    gap: 24px 0;
+    width: 50%;
   }
 }
 </style>

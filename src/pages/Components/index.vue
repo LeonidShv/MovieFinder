@@ -13,7 +13,7 @@
 
     <VSwitch
       @update:v-model="test"
-      :value="isDark"
+      v-model="isDark"
       :activeIcon="Moon"
       :inActiveIcon="Sunny"
     />

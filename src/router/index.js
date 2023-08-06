@@ -9,9 +9,10 @@ const router = createRouter({
       component: () => import("@/pages/HomePage/index.vue"),
     },
     {
-      path: "/movies",
+      path: "/movies/:id",
       name: "movies",
       component: () => import("@/pages/MoviesPage/index.vue"),
+      props: true,
     },
     {
       path: "/movie/:id",
@@ -23,6 +24,11 @@ const router = createRouter({
       path: "/components",
       name: "components",
       component: () => import("@/pages/Components/index.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      component: () => import("@/pages/NotFoundPage/index.vue"),
     },
   ],
 });

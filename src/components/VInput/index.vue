@@ -1,5 +1,6 @@
 <template>
   <el-input
+    class="Input"
     @update:model-value="(value) => $emit('update:v-model', value)"
     :placeholder="placeholder"
     :suffix-icon="icon"
@@ -24,4 +25,10 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.Input.el-input {
+  --el-border-color: var(--border);
+  --el-text-color-placeholder: var(--border);
+  --el-border-color-hover: var(--el-color-primary);
+}
+</style>

@@ -1,5 +1,7 @@
 <template>
-  <ElButton>Default</ElButton>
+  <ElButton class="Button">
+    <slot />
+  </ElButton>
 </template>
 
 <script setup>
@@ -18,4 +20,10 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.Button.el-button {
+  --el-border-color: var(--border);
+  --el-button-text-color: var(--text-color) --el-border-color-hover:
+    var(--el-color-primary);
+}
+</style>
