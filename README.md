@@ -1,7 +1,6 @@
 # MovieFinder
-
-CSS Bliss 
-
+Result:
+https://youtu.be/Yum52gJadTA
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
@@ -13,7 +12,8 @@ npm install
 ```
 
 ### Compile and Hot-Reload for Development
-
+add your api key to .env.development
+VITE_API_KEY=XXXXXXXXXXXXXXX
 ```sh
 npm run dev
 ```
