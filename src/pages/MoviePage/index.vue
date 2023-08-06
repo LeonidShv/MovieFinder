@@ -68,6 +68,7 @@ onMounted(async () => {
     isError.value = true;
   } finally {
     isLoading.value = false;
+    isError.value = !movie.value?.Title;
   }
 });
 

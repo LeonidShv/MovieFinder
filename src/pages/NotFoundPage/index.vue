@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO: reuse VError component -->
   <section class="Error routerView">
     <div>
       <Vue3Lottie :animationData="notFoundPage" :height="200" :width="200" />
@@ -15,7 +16,7 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import VButton from "@/components/VButton/index.vue";
-
+// TODO: Vue3Lottie move to components
 import { Vue3Lottie } from "vue3-lottie";
 
 import notFoundPage from "@/assets/animations/notFoundPage.json";

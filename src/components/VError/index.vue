@@ -1,6 +1,8 @@
 <template>
   <section class="Error routerView">
     <div>
+      <Vue3Lottie :animationData="error" :height="200" :width="200" />
+
       <p class="Error-text">
         An error occurred, please check your Internet connection or the
         relevance of the API key.
@@ -23,6 +25,9 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import VButton from "@/components/VButton/index.vue";
+// TODO: Vue3Lottie move to components
+import { Vue3Lottie } from "vue3-lottie";
+import error from "@/assets/animations/error.json";
 </script>
 
 <style lang="scss" scoped>
