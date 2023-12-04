@@ -1,6 +1,5 @@
 <template>
   <header class="header">
-    <VNavigation />
     <!-- <VToggle
       v-model="isDark"
       @update:model-value="changeTheme"
@@ -11,7 +10,10 @@
   </header>
 
   <!-- <section class="routerView"> -->
-  <RouterView />
+  <main class="main">
+    <VNavigation class="navigation" :navigation="navigation" />
+    <RouterView />
+  </main>
   <!-- </section> -->
 
   <footer class="footer">
@@ -25,7 +27,67 @@
 
 <script setup>
 import { RouterView } from "vue-router";
+import { onMounted, ref } from 'vue'
 import VNavigation from "@/components/VNavigation/index.vue";
+import { useGlobalStore } from "@/stores/cases";
+
+const navigation = ref([
+  {
+    name: 'information',
+    icon: ''
+  },
+  {
+    name: 'cases',
+    icon: ''
+  },
+  {
+    name: 'conclusions',
+    icon: ''
+  },
+  {
+    name: 'parties',
+    icon: ''
+  },
+  {
+    name: 'representatives',
+    icon: ''
+  },
+  {
+    name: 'scl',
+    icon: ''
+  }
+])
+
+onMounted(async () => {
+  console.log(1);
+  try {
+    // isLoading.value = true;
+    const page = 1;
+    const limit = 10;
+    // await useGlobalStore().getCasesList(page, limit);
+    // await useGlobalStore().getCase('001-91993');
+    // await useGlobalStore().getCaseDocsList('001-91993');
+    // await useGlobalStore().getCaseDocsDoctype('001-91993', 'parsed_judgment');
+    // await useGlobalStore().getCaseDocsDoctype('001-91993', 'judgment');
+    // await useGlobalStore().getCaseCitedapps('001-91993');
+    
+  } catch (e) {
+    // isError.value = true;
+    console.log(e);
+  } finally {
+    // console.log('getCasesList: ',useGlobalStore().casesList);
+    // console.log('getCase: ',useGlobalStore().case);
+    // console.log('getCaseDocsList: ',useGlobalStore().caseDocsList);
+    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseDocsDoctype);
+    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseDocsDoctype);
+    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseCitedApps);
+    
+    
+    // isLoading.value = false;
+    // isError.value = !useGlobalStore()?.cases?.length;
+  }
+});
+
 </script>
 
 <style lang="scss">
@@ -48,6 +110,18 @@ import VNavigation from "@/components/VNavigation/index.vue";
 
   @include tablet-lower {
     padding: 0 36px;
+  }
+}
+
+.main {
+  display: flex;
+
+  .navigation {
+    flex: 0 0 200px;
+  }
+
+  :deep(.routerView) {
+    flex: 1;
   }
 }
 

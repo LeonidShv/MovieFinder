@@ -5,27 +5,43 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: () => import("@/pages/HomePage/index.vue"),
+      name: "information",
+      component: () => import("@/pages/Information/InformationPage.vue")
     },
     {
-      path: "/movies/:id",
-      name: "movies",
-      component: () => import("@/pages/MoviesPage/index.vue"),
+      path: "/cases",
+      name: "cases",
+      component: () => import("@/pages/Cases/CasesPage.vue")
+    },
+    {
+      path: "/conclusions",
+      name: "conclusions",
+      component: () => import("@/pages/Conclusions/ConclusionsPage.vue")
+    },
+    {
+      path: "/parties",
+      name: "parties",
+      component: () => import("@/pages/Parties/PartiesPage.vue"),
       props: true,
     },
     {
-      path: "/movie/:id",
-      name: "movie",
-      component: () => import("@/pages/MoviePage/index.vue"),
+      path: "/representatives",
+      name: "representatives",
+      component: () => import("@/pages/Representatives/RepresentativesPage.vue"),
       props: true,
     },
     {
-      path: "/add-movie",
-      name: "addMovie",
-      component: () => import("@/pages/AddMoviePage/index.vue"),
+      path: "/scl",
+      name: "scl",
+      component: () => import("@/pages/Scl/SclPage.vue"),
       props: true,
     },
+    // {
+    //   path: "/add-movie",
+    //   name: "addMovie",
+    //   component: () => import("@/pages/AddMoviePage/index.vue"),
+    //   props: true,
+    // },
     {
       path: "/components",
       name: "components",

@@ -1,5 +1,5 @@
 <template>
-  <el-menu
+  <!-- <el-menu
     :default-active="activeIndex"
     class="Navigation"
     mode="horizontal"
@@ -15,38 +15,72 @@
       :activeIcon="Moon"
       :inActiveIcon="Sunny"
     />
+  </el-menu> -->
+
+  <el-menu
+    active-text-color="#ffd04b"
+    background-color="#545c64"
+    class="el-menu-vertical-demo"
+    default-active="2"
+    text-color="#fff"
+    :collapse="false"
+    @open="handleOpen"
+    @close="handleClose"
+  >
+    <el-menu-item 
+      v-for="({name, icon}, i) in navigation"
+      :key="i"
+      :index="i"
+      @click="goToPage(name)"
+    >
+      <el-icon v-if="icon"><icon-menu /></el-icon>
+      <span>{{ name }}</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { ElMenu, ElIcon, ElMenuItem } from 'element-plus'
+// import { Sunny, Moon } from '@element-plus/icons-vue'
 
-import { ElMenu } from "element-plus";
-import { ElMenuItem } from "element-plus";
-import { Sunny, Moon } from "@element-plus/icons-vue";
+import {
+  Document,
+  Menu as IconMenu,
+  Location,
+  Setting,
+} from '@element-plus/icons-vue'
 
-import "element-plus/es/components/menu/style/css";
-import "element-plus/es/components/menu-item/style/css";
+import 'element-plus/es/components/menu/style/css'
+import 'element-plus/es/components/menu-item/style/css'
 
-import VSwitch from "@/components/VSwitch/index.vue";
+import VSwitch from '@/components/VSwitch/index.vue'
 
-const activeIndex = ref("1");
+const activeIndex = ref('1')
 
-withDefaults(defineProps(), {
-  loading: false,
-  type: "",
+defineProps({
+  navigation: {
+    type: Array,
+    default: () => [],
+  }
 });
 
-const isDark = ref(true);
+const router = useRouter()
+const isDark = ref(true)
+
+function goToPage(name) {
+  router.push({ name })
+}
 
 function onchange(value) {
-  isDark.value = value;
+  isDark.value = value
 }
 
 watch(isDark, (newIsDark) => {
-  const className = newIsDark ? "dark" : "light";
-  document.querySelector("html").setAttribute("class", className);
-});
+  const className = newIsDark ? 'dark' : 'light'
+  document.querySelector('html').setAttribute('class', className)
+})
 </script>
 
 <style lang="scss" scoped>

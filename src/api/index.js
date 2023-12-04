@@ -1,6 +1,16 @@
-import { api } from "@/lib/axios";
+import cases from '@/api/cases'
+import conclusions from '@/api/conclusions'
+import information from '@/api/information'
+import parties from '@/api/parties'
+import representatives from '@/api/representatives'
+import scl from '@/api/scl'
+
 
 export default {
-  getMovies: (movieTitle) => api.get(`/?s=${movieTitle}`),
-  getMovieById: (id) => api.get(`/?i=${id}`),
+  cases,
+  conclusions,
+  information,
+  parties,
+  representatives,
+  scl
 };
