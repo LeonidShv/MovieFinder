@@ -32,7 +32,7 @@
 <script setup>
 import { onMounted, ref, computed } from "vue";
 import { ElCarousel, ElCarouselItem } from "element-plus";
-import VSkeleton from "@/components/VSkeleton/index.vue";
+import VSkeleton from "@/components/Skeleton/VSkeleton.vue";
 import "element-plus/es/components/carousel/style/css";
 import "element-plus/es/components/carousel-item/style/css";
 

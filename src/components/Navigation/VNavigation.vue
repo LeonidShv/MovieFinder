@@ -8,74 +8,56 @@
     <p class="nav-logo">Movie<b class="highlight">Finder</b></p>
     <el-menu-item class="Navigation-item--indent" index="/">Home</el-menu-item>
     <el-menu-item index="/add-movie">Add movie</el-menu-item>
-    <VSwitch
-      class="Navigation-modeSwitch"
-      @update:v-model="onchange"
-      v-model="isDark"
-      :activeIcon="Moon"
-      :inActiveIcon="Sunny"
-    />
   </el-menu> -->
 
   <el-menu
     active-text-color="#ffd04b"
-    background-color="#545c64"
     class="el-menu-vertical-demo"
-    default-active="2"
-    text-color="#fff"
     :collapse="false"
     @open="handleOpen"
     @close="handleClose"
+    router
+    :default-active="loadedUrl"
+    :mode="mode"
   >
     <el-menu-item 
-      v-for="({name, icon}, i) in navigation"
+      v-for="({name, icon, path, label}, i) in navigation"
       :key="i"
-      :index="i"
-      @click="goToPage(name)"
+      :index="path"
     >
       <el-icon v-if="icon"><icon-menu /></el-icon>
-      <span>{{ name }}</span>
+      <span>{{ label }}</span>
     </el-menu-item>
   </el-menu>
 </template>
 
 <script setup>
 import { ref, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import { ElMenu, ElIcon, ElMenuItem } from 'element-plus'
-// import { Sunny, Moon } from '@element-plus/icons-vue'
 
 import {
-  Document,
   Menu as IconMenu,
-  Location,
-  Setting,
 } from '@element-plus/icons-vue'
 
 import 'element-plus/es/components/menu/style/css'
 import 'element-plus/es/components/menu-item/style/css'
 
-import VSwitch from '@/components/VSwitch/index.vue'
-
-const activeIndex = ref('1')
-
 defineProps({
   navigation: {
     type: Array,
     default: () => [],
+  },
+  mode: {
+    type: String,
+    default: ''
   }
 });
 
-const router = useRouter()
+const url = window.location.href?.split('/')
+const loadedUrl = ref(`/${url[url.length - 1]}`)
+
+
 const isDark = ref(true)
-
-function goToPage(name) {
-  router.push({ name })
-}
-
-function onchange(value) {
-  isDark.value = value
-}
 
 watch(isDark, (newIsDark) => {
   const className = newIsDark ? 'dark' : 'light'

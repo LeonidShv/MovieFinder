@@ -1,6 +1,6 @@
 <template>
   <section v-if="!isError" class="parties-page router-view">
-    <VSkeleton class="Movie-skeleton" :loading="isLoading" type="details" />
+    <VSkeleton class="Movie-skeleton" :loading="isLoading" />
     <h2 class="title">
       Scl
     </h2>
@@ -16,7 +16,7 @@ import { toRefs, ref, onMounted, computed } from "vue";
 // import { useGlobalStore } from "@/stores/global";
 import VError from "@/components/VError/index.vue";
 
-import VSkeleton from "@/components/VSkeleton/index.vue";
+import VSkeleton from "@/components/Skeleton/VSkeleton.vue";
 
 const props = defineProps({
   id: {

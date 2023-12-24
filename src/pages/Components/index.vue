@@ -23,10 +23,10 @@
 
 <script setup>
 import { ref } from "vue";
-import VButton from "@/components/VButton/index.vue";
+import VButton from "@/components/Button/VButton.vue";
 import VCarousel from "@/components/VCarousel/index.vue";
 import VInput from "@/components/VInput/index.vue";
-import VSwitch from "@/components/VSwitch/index.vue";
+import VSwitch from "@/components/Switch/VSwitch.vue";
 
 import { Calendar, Search, Sunny, Moon } from "@element-plus/icons-vue";
 

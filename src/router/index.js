@@ -14,6 +14,35 @@ const router = createRouter({
       component: () => import("@/pages/Cases/CasesPage.vue")
     },
     {
+      path: "/case/:id",
+      name: "caseId",
+      props: true,
+      component: () => import("@/pages/Cases/pages/CaseIdPage.vue"),
+      children: [
+        {
+          // when /case/:id/docs is matched
+          path: '',
+          component: () => import("@/pages/Cases/pages/CaseIdPageHome.vue"), 
+          name: 'caseIdPageHome',
+          props: true,
+        },
+        {
+          // when /case/:id/docs is matched
+          path: 'docs',
+          component: () => import("@/pages/Cases/pages/CaseIdDocsPage.vue"), 
+          name: 'caseIdDocs',
+          props: true,
+        },
+        {
+          // when /case/:id/cited-apps is matched
+          path: 'cited-apps',
+          component: () => import("@/pages/Cases/pages/CaseIdCitedAppsPage.vue"), 
+          name: 'caseIdCitedApps',
+          props: true,
+        },
+      ]
+    },
+    {
       path: "/conclusions",
       name: "conclusions",
       component: () => import("@/pages/Conclusions/ConclusionsPage.vue")
@@ -50,7 +79,7 @@ const router = createRouter({
     {
       path: "/:pathMatch(.*)*",
       name: "NotFound",
-      component: () => import("@/pages/NotFoundPage/index.vue"),
+      component: () => import("@/pages/NotFound/NotFoundPage.vue"),
     },
   ],
 });
