@@ -5,12 +5,12 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "information",
+      name: "Information",
       component: () => import("@/pages/Information/InformationPage.vue"),
     },
     {
       path: "/cases",
-      name: "cases",
+      name: "Cases",
       component: () => import("@/pages/Cases/CasesPage.vue"),
     },
     {
@@ -20,25 +20,22 @@ const router = createRouter({
       component: () => import("@/pages/Cases/subPages/CaseIdWrapperPage.vue"),
       children: [
         {
-          // when /case/:id/docs is matched
           path: "",
           component: () => import("@/pages/Cases/subPages/CaseIdPage.vue"),
           name: "CaseId",
           props: true,
         },
         {
-          // when /case/:id/docs is matched
           path: "docs",
           component: () => import("@/pages/Cases/subPages/CaseIdDocsPage.vue"),
-          name: "caseIdDocs",
+          name: "CaseIdDocs",
           props: true,
         },
         {
-          // when /case/:id/cited-apps is matched
           path: "cited-apps",
           component: () =>
             import("@/pages/Cases/subPages/CaseIdCitedAppsPage.vue"),
-          name: "caseIdCitedApps",
+          name: "CaseIdCitedApps",
           props: true,
         },
       ],
@@ -50,33 +47,22 @@ const router = createRouter({
     },
     {
       path: "/parties",
-      name: "parties",
+      name: "Parties",
       component: () => import("@/pages/Parties/PartiesPage.vue"),
       props: true,
     },
     {
       path: "/representatives",
-      name: "representatives",
+      name: "Representatives",
       component: () =>
         import("@/pages/Representatives/RepresentativesPage.vue"),
       props: true,
     },
     {
       path: "/scl",
-      name: "scl",
+      name: "Scl",
       component: () => import("@/pages/Scl/SclPage.vue"),
       props: true,
-    },
-    // {
-    //   path: "/add-movie",
-    //   name: "addMovie",
-    //   component: () => import("@/pages/AddMoviePage/index.vue"),
-    //   props: true,
-    // },
-    {
-      path: "/components",
-      name: "components",
-      component: () => import("@/pages/Components/index.vue"),
     },
     {
       path: "/:pathMatch(.*)*",

@@ -2,7 +2,7 @@
   <section class="w-100 router-view">
     <header class="header d-flex m-b-8">
       <div class="case-id__back-block d-flex align-center">
-        <VButton type="back" toName="cases" class="m-r-8" />
+        <VButton type="back" :to="toBackRoute" class="m-r-8" />
         <h2 class="title-2">Case № {{ id }}</h2>
       </div>
 
@@ -17,8 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs, ref } from "vue";
+import { toRefs, ref, computed } from "vue";
 import { RouterView } from "vue-router";
+import { useRoute } from "vue-router";
 import VButton from "@/components/Button/VButton.vue";
 import VNavigation from "@/components/Navigation/VNavigation.vue";
 
@@ -28,6 +29,8 @@ const props = defineProps({
     default: "",
   },
 });
+
+const route = useRoute();
 const { id } = toRefs(props);
 
 const navigation: any = ref([
@@ -38,19 +41,23 @@ const navigation: any = ref([
     label: "Case",
   },
   {
-    name: "caseIdDocs",
+    name: "CaseIdDocs",
     icon: "",
     path: `/case/${id.value}/docs`,
     label: "Docs",
     disabled: true,
   },
   {
-    name: "caseIdCitedApps",
+    name: "CaseIdCitedApps",
     icon: "",
     path: `/case/${id.value}/cited-apps`,
     label: "Cited app",
   },
 ]);
+
+const toBackRoute = computed(() => {
+  return {name: 'Cases', query: { page: Number(route.query.page) || 1 }}
+})
 </script>
 
 <style scoped lang="scss">

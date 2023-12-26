@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useGlobalStore } from "@/stores/cases";
 import {
   casesTableConfigurator,
@@ -53,10 +53,14 @@ const props = defineProps({
   },
 });
 
+const router = useRouter();
+const route = useRoute();
 const store = useGlobalStore();
+
 const isLoading = ref(false);
 const isError = ref(false);
-const currentPage = ref(1);
+const currentPage = ref(Number(route.query.page) || 1);
+const limit = 10;
 const styleTable = {
   "max-width": "calc(100vw - 312px)",
   width: "min-content",
@@ -66,33 +70,31 @@ const styleSkeleton = {
   height: "calc(100vh - 284px)",
 };
 
-function changePageNumber(pageNumber) {
+async function changePageNumber(pageNumber) {
   currentPage.value = pageNumber;
+  router.push({ name: "Cases", query: { page: pageNumber } });
+  await getCasesList(pageNumber, limit);
 }
 
-const router = useRouter();
-
 function handleRowClick({ itemid }) {
-  router.push({ name: "CaseIdWrapper", params: { id: itemid } });
+  router.push({ name: "CaseId", params: { id: itemid }, query: { page: currentPage.value } });
 }
 
 onMounted(async () => {
-  const page = 1;
-  const limit = 10;
+  await getCasesList(currentPage.value, limit)
+});
 
+async function getCasesList(pageNumber, limit) {
   try {
     isLoading.value = true;
-    console.log(isLoading.value);
-    await store.getCasesList(page, limit);
+    await store.getCasesList(pageNumber, limit);
   } catch (e) {
     isError.value = true;
   } finally {
     isLoading.value = false;
     isError.value = !store.casesList.length;
   }
-
-  console.log(isLoading.value);
-});
+}
 
 function changeCasesConfigurator(casesConfigurator) {
   localStorage.setItem("selectedCasesConfigurator", casesConfigurator);

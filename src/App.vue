@@ -24,40 +24,40 @@ import VSwitch from "@/components/Switch/VSwitch.vue";
 
 const navigation = ref([
   {
-    name: "information",
+    name: "Information",
     icon: "",
     path: "/",
     label: "Information",
   },
   {
-    name: "cases",
+    name: "Cases",
     icon: "",
-    path: "/cases",
+    path: "/cases?page=1",
     label: "Cases",
   },
   {
-    name: "conclusions",
+    name: "Conclusions",
     icon: "",
     path: "/conclusions",
     label: "Conclusions",
     disabled: true,
   },
   {
-    name: "parties",
+    name: "Parties",
     icon: "",
     path: "/parties",
     label: "Parties",
     disabled: true,
   },
   {
-    name: "representatives",
+    name: "Representatives",
     icon: "",
     path: "/representatives",
     label: "Representatives",
     disabled: true,
   },
   {
-    name: "scl",
+    name: "Scl",
     icon: "",
     path: "/scl",
     label: "SCL",

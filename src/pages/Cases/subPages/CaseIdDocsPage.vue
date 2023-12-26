@@ -14,7 +14,6 @@
 
 <script setup>
 import { toRefs, ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import { useGlobalStore } from "@/stores/cases";
 
 const props = defineProps({
@@ -28,8 +27,6 @@ const store = useGlobalStore();
 const { id } = toRefs(props);
 const isLoading = ref(false);
 const isError = ref(false);
-
-const router = useRouter();
 
 onMounted(async () => {
   try {

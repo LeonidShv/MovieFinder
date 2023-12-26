@@ -4,7 +4,7 @@
   </ElButton>
   <router-link
     v-else-if="type === 'back'"
-    :to="{ name: toName }"
+    :to="to"
     class="button__link"
   >
     <ArrowLeft class="button__icon" />Back
@@ -29,7 +29,7 @@ defineProps({
       return ["default", "back"].includes(value);
     },
   },
-  toName: {
+  to: {
     type: String,
     default: "",
   },
