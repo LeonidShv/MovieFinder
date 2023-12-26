@@ -6,8 +6,8 @@
 
       <p class="Error-text">Not found page, please go back to the home page.</p>
 
-      <RouterLink class="Error-link" :to="{ name: 'home' }">
-        <VButton> Back to home page </VButton>
+      <RouterLink class="Error-link" :to="{ name: 'Cases' }">
+        <VButton> Go cases </VButton>
       </RouterLink>
     </div>
   </section>
@@ -15,7 +15,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import VButton from "@/components/VButton/index.vue";
+import VButton from "@/components/Button/VButton.vue";
 // TODO: Vue3Lottie move to components
 import { Vue3Lottie } from "vue3-lottie";
 

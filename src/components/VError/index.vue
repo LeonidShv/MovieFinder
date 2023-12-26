@@ -14,17 +14,13 @@
           >support@test.com</a
         >
       </p>
-
-      <RouterLink class="Error-link" :to="{ name: 'home' }">
-        <VButton> Back to home page </VButton>
-      </RouterLink>
     </div>
   </section>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
-import VButton from "@/components/VButton/index.vue";
+import VButton from "@/components/Button/VButton.vue";
 // TODO: Vue3Lottie move to components
 import { Vue3Lottie } from "vue3-lottie";
 import error from "@/assets/animations/error.json";

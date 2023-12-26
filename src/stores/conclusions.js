@@ -3,12 +3,12 @@ import api from "@/api";
 export const useGlobalStore = defineStore("conclusions", {
   state: () => ({
     conclusionsList: [],
-    conclusion: {}
+    conclusion: {},
   }),
   getters: {},
   actions: {
     async getConclusionsList(page, limit) {
-      const response = await api.conclusions.readCasesList(page, limit);
+      const response = await api.conclusions.readConclusionsList(page, limit);
 
       this.conclusionsList = response.data;
     },
@@ -17,6 +17,6 @@ export const useGlobalStore = defineStore("conclusions", {
       const response = await api.conclusions.readConclusion(id);
 
       this.conclusion = response.data;
-    }
+    },
   },
 });

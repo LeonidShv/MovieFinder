@@ -5,52 +5,69 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "information",
-      component: () => import("@/pages/Information/InformationPage.vue")
+      name: "Information",
+      component: () => import("@/pages/Information/InformationPage.vue"),
     },
     {
       path: "/cases",
-      name: "cases",
-      component: () => import("@/pages/Cases/CasesPage.vue")
+      name: "Cases",
+      component: () => import("@/pages/Cases/CasesPage.vue"),
+    },
+    {
+      path: "/case/:id",
+      name: "CaseIdWrapper",
+      props: true,
+      component: () => import("@/pages/Cases/subPages/CaseIdWrapperPage.vue"),
+      children: [
+        {
+          path: "",
+          component: () => import("@/pages/Cases/subPages/CaseIdPage.vue"),
+          name: "CaseId",
+          props: true,
+        },
+        {
+          path: "docs",
+          component: () => import("@/pages/Cases/subPages/CaseIdDocsPage.vue"),
+          name: "CaseIdDocs",
+          props: true,
+        },
+        {
+          path: "cited-apps",
+          component: () =>
+            import("@/pages/Cases/subPages/CaseIdCitedAppsPage.vue"),
+          name: "CaseIdCitedApps",
+          props: true,
+        },
+      ],
     },
     {
       path: "/conclusions",
       name: "conclusions",
-      component: () => import("@/pages/Conclusions/ConclusionsPage.vue")
+      component: () => import("@/pages/Conclusions/ConclusionsPage.vue"),
     },
     {
       path: "/parties",
-      name: "parties",
+      name: "Parties",
       component: () => import("@/pages/Parties/PartiesPage.vue"),
       props: true,
     },
     {
       path: "/representatives",
-      name: "representatives",
-      component: () => import("@/pages/Representatives/RepresentativesPage.vue"),
+      name: "Representatives",
+      component: () =>
+        import("@/pages/Representatives/RepresentativesPage.vue"),
       props: true,
     },
     {
       path: "/scl",
-      name: "scl",
+      name: "Scl",
       component: () => import("@/pages/Scl/SclPage.vue"),
       props: true,
-    },
-    // {
-    //   path: "/add-movie",
-    //   name: "addMovie",
-    //   component: () => import("@/pages/AddMoviePage/index.vue"),
-    //   props: true,
-    // },
-    {
-      path: "/components",
-      name: "components",
-      component: () => import("@/pages/Components/index.vue"),
     },
     {
       path: "/:pathMatch(.*)*",
       name: "NotFound",
-      component: () => import("@/pages/NotFoundPage/index.vue"),
+      component: () => import("@/pages/NotFound/NotFoundPage.vue"),
     },
   ],
 });
