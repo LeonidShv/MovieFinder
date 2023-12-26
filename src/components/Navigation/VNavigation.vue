@@ -1,15 +1,4 @@
 <template>
-  <!-- <el-menu
-    :default-active="activeIndex"
-    class="Navigation"
-    mode="horizontal"
-    router
-  >
-    <p class="nav-logo">Movie<b class="highlight">Finder</b></p>
-    <el-menu-item class="Navigation-item--indent" index="/">Home</el-menu-item>
-    <el-menu-item index="/add-movie">Add movie</el-menu-item>
-  </el-menu> -->
-
   <el-menu
     active-text-color="#ffd04b"
     class="el-menu-vertical-demo"
@@ -21,9 +10,10 @@
     :mode="mode"
   >
     <el-menu-item 
-      v-for="({name, icon, path, label}, i) in navigation"
+      v-for="({disabled, icon, path, label}, i) in navigation"
       :key="i"
       :index="path"
+      :disabled="disabled"
     >
       <el-icon v-if="icon"><icon-menu /></el-icon>
       <span>{{ label }}</span>

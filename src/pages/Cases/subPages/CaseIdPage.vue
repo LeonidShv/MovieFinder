@@ -31,19 +31,17 @@
     </div>
 
     <VError v-if="isError" />
-    <!-- <p>{{ store.case }}</p> -->
   </section>
 </template>
 
 <script setup>
 import { toRefs, ref, onMounted, computed } from 'vue'
-import { useRouter, RouterView } from 'vue-router'
 import { useGlobalStore } from '@/stores/cases'
 import VCard from '@/components/Card/VCard.vue'
 import VError from '@/components/VError/index.vue'
 import VSkeleton from '@/components/Skeleton/VSkeleton.vue'
-import JudgmentContentRecursive from '@/pages/Cases/pages/JudgmentContentRecursive.vue'
-import JudgmentPlanRecursive from '@/pages/Cases/pages/JudgmentPlanRecursive.vue'
+import JudgmentContentRecursive from '@/pages/Cases/subPages/JudgmentContentRecursive.vue'
+import JudgmentPlanRecursive from '@/pages/Cases/subPages/JudgmentPlanRecursive.vue'
 
 const props = defineProps({
   id: {
@@ -62,8 +60,6 @@ const store = useGlobalStore()
 const { id } = toRefs(props)
 const isLoading = ref(false)
 const isError = ref(false)
-
-const router = useRouter()
 
 onMounted(async () => {
   console.log('onMounted: ',store.case.judgment);

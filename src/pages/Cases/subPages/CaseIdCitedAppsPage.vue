@@ -1,16 +1,21 @@
 <template>
   <section>
-      <h1>CaseIdCitedAppsPage</h1>
-    <!-- <p>{{ store.case }}</p> -->
+      <h1>Cited Apps</h1>
+
+      <div class="d-flex gap-16 m-t-24">
+        <VTag 
+          v-for="(citedApp, i) in store.caseCitedApps"
+          :key="i"
+          :text="citedApp"
+         />
+      </div>
   </section>
 </template>
 
 <script setup>
-import { toRefs, ref, onMounted, computed } from 'vue'
-import { useRouter, RouterView } from 'vue-router'
+import { toRefs, ref, onMounted } from 'vue'
 import { useGlobalStore } from '@/stores/cases'
-import VButton from '@/components/Button/VButton.vue'
-import VNavigation from "@/components/Navigation/VNavigation.vue";
+import VTag from '@/components/Tag/VTag.vue'
 
 const props = defineProps({
   id: {
@@ -24,17 +29,17 @@ const { id } = toRefs(props)
 const isLoading = ref(false)
 const isError = ref(false)
 
-const router = useRouter()
-
 onMounted(async () => {
   try {
     isLoading.value = true
-    await store.getCase(id.value)
+    await store.getCaseCitedapps(id.value)
   } catch (e) {
     isError.value = true
   } finally {
     isLoading.value = false
-    isError.value = !Object.keys(store.case).length
+    isError.value = !Object.keys(store.caseCitedApps).length
+
+    console.log(store.caseCitedApps);
   }
 })
 </script>

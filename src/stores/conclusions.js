@@ -8,7 +8,7 @@ export const useGlobalStore = defineStore("conclusions", {
   getters: {},
   actions: {
     async getConclusionsList(page, limit) {
-      const response = await api.conclusions.readCasesList(page, limit);
+      const response = await api.conclusions.readConclusionsList(page, limit);
 
       this.conclusionsList = response.data;
     },

@@ -15,28 +15,28 @@ const router = createRouter({
     },
     {
       path: "/case/:id",
-      name: "caseId",
+      name: "CaseIdWrapper",
       props: true,
-      component: () => import("@/pages/Cases/pages/CaseIdPage.vue"),
+      component: () => import("@/pages/Cases/subPages/CaseIdWrapperPage.vue"),
       children: [
         {
           // when /case/:id/docs is matched
           path: '',
-          component: () => import("@/pages/Cases/pages/CaseIdPageHome.vue"), 
-          name: 'caseIdPageHome',
+          component: () => import("@/pages/Cases/subPages/CaseIdPage.vue"), 
+          name: 'CaseId',
           props: true,
         },
         {
           // when /case/:id/docs is matched
           path: 'docs',
-          component: () => import("@/pages/Cases/pages/CaseIdDocsPage.vue"), 
+          component: () => import("@/pages/Cases/subPages/CaseIdDocsPage.vue"), 
           name: 'caseIdDocs',
           props: true,
         },
         {
           // when /case/:id/cited-apps is matched
           path: 'cited-apps',
-          component: () => import("@/pages/Cases/pages/CaseIdCitedAppsPage.vue"), 
+          component: () => import("@/pages/Cases/subPages/CaseIdCitedAppsPage.vue"), 
           name: 'caseIdCitedApps',
           props: true,
         },

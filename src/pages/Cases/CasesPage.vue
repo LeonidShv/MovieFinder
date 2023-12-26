@@ -18,7 +18,7 @@
         v-show="!isLoading"
         @rowClick="handleRowClick"
       />
-      <VSkeleton :loading="isLoading" :styleConfig="styleTable" />
+      <VSkeleton :loading="isLoading" :styleConfig="styleSkeleton" />
       <VPagination
         @update="changePageNumber"
         :currentPage="currentPage"
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { toRefs, ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGlobalStore } from '@/stores/cases'
 import {
@@ -54,13 +54,15 @@ const props = defineProps({
 })
 
 const store = useGlobalStore()
-// const { id } = toRefs(props)
 const isLoading = ref(false)
 const isError = ref(false)
 const currentPage = ref(1)
 const styleTable = {
   'max-width': 'calc(100vw - 312px)',
   'width': 'min-content',
+  height: 'calc(100vh - 284px)'
+}
+const styleSkeleton = {
   height: 'calc(100vh - 284px)'
 }
 
@@ -71,8 +73,7 @@ function changePageNumber(pageNumber) {
 const router = useRouter()
 
 function handleRowClick({itemid}) {
-  console.log(itemid);
-  router.push({ name: 'caseIdPageHome', params: { id: itemid } })
+  router.push({ name: 'CaseIdWrapper', params: { id: itemid } })
 }
 
 onMounted(async () => {
@@ -81,6 +82,7 @@ onMounted(async () => {
 
   try {
     isLoading.value = true
+    console.log(isLoading.value);
     await store.getCasesList(page, limit)
   } catch (e) {
     isError.value = true
@@ -88,6 +90,8 @@ onMounted(async () => {
     isLoading.value = false
     isError.value = !store.casesList.length
   }
+
+  console.log(isLoading.value);
 })
 
 function changeCasesConfigurator(casesConfigurator) {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="data.elements.length">
     <li v-if="data.elements.length">
       <a @click.prevent="scrollTo(data.content.replace(/\s/g, ''))">
         <span v-if="index">{{ index }}.</span>
@@ -7,13 +7,13 @@
         <span>{{ data.content }}</span>
       </a>
     </li>
+  </div>
 
-    <JudgmentPlanRecursive
+  <JudgmentPlanRecursive
       v-for="(element, i) in data.elements"
       :key="i"
       :data="element" 
     />
-  </div>
 </template>
 
 <script setup>
@@ -34,10 +34,8 @@ function scrollTo(elementId) {
   if (element) {
     element.scrollIntoView({
       behavior: 'smooth',
-      block: 'start', // You can adjust this value based on your preference
+      block: 'start',
     });
   }
 }
-
-
 </script>

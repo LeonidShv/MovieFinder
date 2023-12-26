@@ -32,7 +32,7 @@ const { id } = toRefs(props);
 
 const navigation: any = ref([
   {
-    name: 'caseIdPageHome',
+    name: 'CaseIdWrapper',
     icon: '',
     path: `/case/${id.value}`,
     label: 'Case'
@@ -41,7 +41,8 @@ const navigation: any = ref([
     name: 'caseIdDocs',
     icon: '',
     path: `/case/${id.value}/docs`,
-    label: 'Docs'
+    label: 'Docs',
+    disabled: true
   },
   {
     name: 'caseIdCitedApps',
@@ -52,7 +53,8 @@ const navigation: any = ref([
 ])
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+$miv-items-amount: 2;
 .header {
   justify-content: space-between;
   min-height: var(--header-height);
@@ -62,7 +64,7 @@ const navigation: any = ref([
 
 .case-id__navigation {
   gap: 16px;
-  width: 320px;
+  width: calc($miv-items-amount * 105px);
 }
 
 :deep(.el-menu--horizontal>.el-menu-item) {

@@ -5,11 +5,12 @@
 
 <script setup>
 import { ElSkeleton } from "element-plus";
+import { onMounted } from "vue";
 
 import "element-plus/es/components/skeleton/style/css";
 import "element-plus/es/components/skeleton-item/style/css";
 
-defineProps({
+const props = defineProps({
   loading: {
     type: Boolean,
     default: false,
@@ -19,6 +20,10 @@ defineProps({
     default: {}
   }
 });
+
+onMounted(() => {
+  console.log(props.loading, props.styleConfig);
+})
 </script>
 
 <style scoped lang="scss">

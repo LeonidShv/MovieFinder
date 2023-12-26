@@ -5,7 +5,10 @@ export const useGlobalStore = defineStore("cases", {
     casesList: [],
     case: {},
     caseDocsList: [],
-    caseDocsDoctype: {},
+    caseDocsDoctype: {
+      judgment: null,
+      parsed_judgment: null
+    },
     caseCitedApps: []
   }),
   getters: {},
@@ -32,7 +35,7 @@ export const useGlobalStore = defineStore("cases", {
       // judgment, parsed_judgment
       const response = await api.cases.readCaseDocsDoctype(id, doctype);
       // could be file or text
-      this.caseDocsDoctype = response.data;
+      this.caseDocsDoctype[doctype] = response.data;
     },
 
     async getCaseCitedapps(id) {

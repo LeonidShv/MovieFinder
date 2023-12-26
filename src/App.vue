@@ -13,19 +13,11 @@
     <VNavigation class="navigation" :navigation="navigation" />
     <RouterView />
   </main>
-
-  <!-- <footer class="footer">
-    <p>© Copyright <b>2023</b></p>
-
-    <p>
-      <strong>Movie<b class="highlight">Finder</b></strong>
-    </p>
-  </footer> -->
 </template>
 
 <script setup>
 import { RouterView } from "vue-router";
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { Sunny, Moon } from "@element-plus/icons-vue";
 import VNavigation from "@/components/Navigation/VNavigation.vue";
 import VSwitch from "@/components/Switch/VSwitch.vue";
@@ -48,25 +40,29 @@ const navigation = ref([
     name: 'conclusions',
     icon: '',
     path: '/conclusions',
-    label: 'Conclusions'
+    label: 'Conclusions',
+    disabled: true
   },
   {
     name: 'parties',
     icon: '',
     path: '/parties',
-    label: 'Parties'
+    label: 'Parties',
+    disabled: true
   },
   {
     name: 'representatives',
     icon: '',
     path: '/representatives',
-    label: 'Representatives'
+    label: 'Representatives',
+    disabled: true
   },
   {
     name: 'scl',
     icon: '',
     path: '/scl',
-    label: 'SCL'
+    label: 'SCL',
+    disabled: true
   }
 ])
 
@@ -80,36 +76,6 @@ watch(isDark, (newIsDark) => {
   const className = newIsDark ? "dark" : "light";
   document.querySelector("html").setAttribute("class", className);
 });
-
-onMounted(async () => {
-  try {
-    // isLoading.value = true;
-    const page = 1;
-    const limit = 10;
-    // await useGlobalStore().getCasesList(page, limit);
-    // await useGlobalStore().getCase('001-91993');
-    // await useGlobalStore().getCaseDocsList('001-91993');
-    // await useGlobalStore().getCaseDocsDoctype('001-91993', 'parsed_judgment');
-    // await useGlobalStore().getCaseDocsDoctype('001-91993', 'judgment');
-    // await useGlobalStore().getCaseCitedapps('001-91993');
-    
-  } catch (e) {
-    // isError.value = true;
-    console.log(e);
-  } finally {
-    // console.log('getCasesList: ',useGlobalStore().casesList);
-    // console.log('getCase: ',useGlobalStore().case);
-    // console.log('getCaseDocsList: ',useGlobalStore().caseDocsList);
-    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseDocsDoctype);
-    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseDocsDoctype);
-    // console.log('getCaseDocsDoctype: ',useGlobalStore().caseCitedApps);
-    
-    
-    // isLoading.value = false;
-    // isError.value = !useGlobalStore()?.cases?.length;
-  }
-});
-
 </script>
 
 <style lang="scss" scoped>
