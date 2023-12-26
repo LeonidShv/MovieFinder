@@ -14,10 +14,6 @@
           >support@test.com</a
         >
       </p>
-
-      <RouterLink class="Error-link" :to="{ name: 'information' }">
-        <VButton> Back to home page </VButton>
-      </RouterLink>
     </div>
   </section>
 </template>

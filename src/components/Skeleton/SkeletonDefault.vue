@@ -11,7 +11,6 @@
 
 <script setup>
 import { ElSkeleton } from "element-plus";
-import { onMounted } from "vue";
 
 import "element-plus/es/components/skeleton/style/css";
 import "element-plus/es/components/skeleton-item/style/css";
@@ -25,10 +24,6 @@ const props = defineProps({
     type: Object,
     default: {},
   },
-});
-
-onMounted(() => {
-  console.log(props.loading, props.styleConfig);
 });
 </script>
 

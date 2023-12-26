@@ -40,13 +40,13 @@ const navigation: any = ref([
     path: `/case/${id.value}`,
     label: "Case",
   },
-  {
-    name: "CaseIdDocs",
-    icon: "",
-    path: `/case/${id.value}/docs`,
-    label: "Docs",
-    disabled: true,
-  },
+  // {
+  //   name: "CaseIdDocs",
+  //   icon: "",
+  //   path: `/case/${id.value}/docs`,
+  //   label: "Docs",
+  //   disabled: true,
+  // },
   {
     name: "CaseIdCitedApps",
     icon: "",

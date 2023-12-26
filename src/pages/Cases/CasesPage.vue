@@ -2,7 +2,7 @@
   <section class="cases-page router-view">
     <h2 class="title-1 m-b-8">Cases</h2>
     <div v-if="!isError">
-      <div class="filters m-b-24">
+      <div class="filters m-b-24 d-flex wrap">
         <VSelect
           v-model="selectedCasesConfigurator"
           :options="optionsCasesListSelect"
@@ -93,6 +93,7 @@ async function getCasesList(pageNumber, limit) {
   } finally {
     isLoading.value = false;
     isError.value = !store.casesList.length;
+    console.log(isError.value);
   }
 }
 

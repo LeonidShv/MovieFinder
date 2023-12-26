@@ -65,7 +65,7 @@ const navigation = ref([
   },
 ]);
 
-const isDark = ref(true);
+const isDark = ref(false);
 
 function onchange(value) {
   isDark.value = value;
@@ -88,7 +88,6 @@ watch(isDark, (newIsDark) => {
   min-height: var(--header-height);
   background-color: var(--bg-block);
   box-shadow: var(--shadow-header);
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
   &__switch-theme {
     margin-left: auto;

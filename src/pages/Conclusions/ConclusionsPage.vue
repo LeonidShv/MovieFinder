@@ -72,7 +72,6 @@ function changePageNumber(pageNumber) {
 const router = useRouter();
 
 function handleRowClick({ itemid }) {
-  console.log(itemid);
   router.push({ name: "CaseIdWrapper", params: { id: itemid } });
 }
 
@@ -86,7 +85,6 @@ onMounted(async () => {
   } catch (e) {
     isError.value = true;
   } finally {
-    console.log(store.conclusionsList);
     isLoading.value = false;
     isError.value = !store.conclusionsList.length;
   }

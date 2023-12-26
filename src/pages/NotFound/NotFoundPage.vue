@@ -6,8 +6,8 @@
 
       <p class="Error-text">Not found page, please go back to the home page.</p>
 
-      <RouterLink class="Error-link" :to="{ name: 'information' }">
-        <VButton> Back to home page </VButton>
+      <RouterLink class="Error-link" :to="{ name: 'Cases' }">
+        <VButton> Go cases </VButton>
       </RouterLink>
     </div>
   </section>

@@ -70,7 +70,6 @@ const isLoading = ref(false);
 const isError = ref(false);
 
 onMounted(async () => {
-  console.log("onMounted: ", store.case.judgment);
   try {
     isLoading.value = true;
     await store.getCase(id.value);

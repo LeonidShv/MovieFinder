@@ -38,3 +38,9 @@ defineProps({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+:deep(tr) {
+  cursor: pointer;
+}
+</style>

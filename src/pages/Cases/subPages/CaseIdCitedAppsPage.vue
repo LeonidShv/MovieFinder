@@ -2,7 +2,7 @@
   <section>
     <h1>Cited Apps</h1>
 
-    <div class="d-flex gap-16 m-t-24">
+    <div class="d-flex wrap gap-16 m-t-24">
       <VTag
         v-for="(citedApp, i) in store.caseCitedApps"
         :key="i"
@@ -38,8 +38,6 @@ onMounted(async () => {
   } finally {
     isLoading.value = false;
     isError.value = !Object.keys(store.caseCitedApps).length;
-
-    console.log(store.caseCitedApps);
   }
 });
 </script>

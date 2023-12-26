@@ -1,5 +1,6 @@
 <template>
   <el-select
+    class="Select"
     @update:model-value="(value) => $emit('update:v-model', value)"
     multiple
     collapse-tags
@@ -19,7 +20,6 @@
 <script setup>
 import { ElSelect, ElOption } from "element-plus";
 import "element-plus/es/components/select/style/css";
-// import 'element-plus/es/components/select-option/style/css'
 
 defineEmits(["update:v-model"]);
 
@@ -34,3 +34,9 @@ defineProps({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.Select {
+  min-width: 160px;
+}
+</style>

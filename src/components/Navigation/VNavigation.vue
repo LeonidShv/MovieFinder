@@ -1,6 +1,5 @@
 <template>
   <el-menu
-    active-text-color="#ffd04b"
     class="el-menu-vertical-demo"
     :collapse="false"
     @open="handleOpen"

@@ -37,12 +37,6 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.Button.el-button {
-  --el-border-color: var(--border);
-  --el-button-text-color: var(--text-color) --el-border-color-hover:
-    var(--el-color-primary);
-}
-
 .button {
   &__icon {
     width: 16px;

@@ -8,7 +8,6 @@ router.get('/', async function(req, res, next) {
     const limit = req.query.limit || 10;
     const response = await axios.get(`https://echr-opendata.eu/api/v1/cases?page=${page}&limit=${limit}`);
     const data = response.data;
-    console.log(data);
     res.status(200).send(data)
   } catch (error) {
     console.error(error);
@@ -33,10 +32,6 @@ router.get('/:itemid/docs/:doctype', async function(req, res, next) {
   try {
     const itemid = req.params.itemid;
     const doctype = req.params.doctype;
-    // doctype:
-    // judgment - file.docx
-    // parsed_judgment - parsed response
-    // and 2 other types without name
     const response = await axios.get(`https://echr-opendata.eu/api/v1/cases/${itemid}/docs/${doctype}`);
     const data = response.data;
 
