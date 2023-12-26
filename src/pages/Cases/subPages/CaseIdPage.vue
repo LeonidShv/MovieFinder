@@ -3,8 +3,16 @@
     <div v-if="!isError">
       <p>{{ firstCard }}</p>
       <div class="d-flex gap-16 wrap m-t-24">
-        <VCard class="m-t-24" title="Case details" :list="dividedCards.firstCard" />
-        <VCard class="m-t-24" title="Case details" :list="dividedCards.secondCard" />
+        <VCard
+          class="m-t-24"
+          title="Case details"
+          :list="dividedCards.firstCard"
+        />
+        <VCard
+          class="m-t-24"
+          title="Case details"
+          :list="dividedCards.secondCard"
+        />
       </div>
 
       <section class="m-t-16">
@@ -15,16 +23,16 @@
           <JudgmentPlanRecursive
             v-for="(element, i) in store.case.judgment"
             :key="i"
-            :index="i+1"
-            :data="element" 
+            :index="i + 1"
+            :data="element"
           />
         </ul>
 
         <JudgmentContentRecursive
           v-for="(element, i) in store.case.judgment"
           :key="i"
-          :index="i+1"
-          :data="element" 
+          :index="i + 1"
+          :data="element"
         />
       </section>
       <VSkeleton :loading="isLoading" :styleConfig="styleTable" />
@@ -35,65 +43,68 @@
 </template>
 
 <script setup>
-import { toRefs, ref, onMounted, computed } from 'vue'
-import { useGlobalStore } from '@/stores/cases'
-import VCard from '@/components/Card/VCard.vue'
-import VError from '@/components/VError/index.vue'
-import VSkeleton from '@/components/Skeleton/VSkeleton.vue'
-import JudgmentContentRecursive from '@/pages/Cases/subPages/JudgmentContentRecursive.vue'
-import JudgmentPlanRecursive from '@/pages/Cases/subPages/JudgmentPlanRecursive.vue'
+import { toRefs, ref, onMounted, computed } from "vue";
+import { useGlobalStore } from "@/stores/cases";
+import VCard from "@/components/Card/VCard.vue";
+import VError from "@/components/VError/index.vue";
+import VSkeleton from "@/components/Skeleton/VSkeleton.vue";
+import JudgmentContentRecursive from "@/pages/Cases/subPages/JudgmentContentRecursive.vue";
+import JudgmentPlanRecursive from "@/pages/Cases/subPages/JudgmentPlanRecursive.vue";
 
 const props = defineProps({
   id: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
 const styleTable = {
-  'max-width': 'calc(100vw - 312px)',
-  width: 'min-content',
-  height: 'calc(100vh - 284px)'
-}
+  "max-width": "calc(100vw - 312px)",
+  width: "min-content",
+  height: "calc(100vh - 284px)",
+};
 
-const store = useGlobalStore()
-const { id } = toRefs(props)
-const isLoading = ref(false)
-const isError = ref(false)
+const store = useGlobalStore();
+const { id } = toRefs(props);
+const isLoading = ref(false);
+const isError = ref(false);
 
 onMounted(async () => {
-  console.log('onMounted: ',store.case.judgment);
+  console.log("onMounted: ", store.case.judgment);
   try {
-    isLoading.value = true
-    await store.getCase(id.value)
+    isLoading.value = true;
+    await store.getCase(id.value);
   } catch (e) {
-    isError.value = true
+    isError.value = true;
   } finally {
-    isLoading.value = false
-    isError.value = !Object.keys(store.case).length
+    isLoading.value = false;
+    isError.value = !Object.keys(store.case).length;
   }
-})
+});
 
 const storeCase = computed(() => {
-  const { judgment, ...rest } = store.case
+  const { judgment, ...rest } = store.case;
   return Object.entries(rest).sort((a, b) => {
     if (a[0] > b[0]) {
-      return 1
+      return 1;
     }
     if (a[0] < b[0]) {
-      return -1
+      return -1;
     }
-    return 0
-  })
-})
+    return 0;
+  });
+});
 
 const dividedCards = computed(() => {
-  const lengthFirstList = Math.ceil(storeCase.value.length / 2)
-  const firstCard = storeCase.value.slice(0, lengthFirstList)
-  const secondCard = storeCase.value.slice(lengthFirstList, storeCase.value.length)
+  const lengthFirstList = Math.ceil(storeCase.value.length / 2);
+  const firstCard = storeCase.value.slice(0, lengthFirstList);
+  const secondCard = storeCase.value.slice(
+    lengthFirstList,
+    storeCase.value.length,
+  );
 
-  return {firstCard, secondCard}
-})
+  return { firstCard, secondCard };
+});
 </script>
 
 <style scoped lang="scss">

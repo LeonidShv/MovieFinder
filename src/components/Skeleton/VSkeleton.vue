@@ -8,11 +8,11 @@ import SkeletonDefault from "@/components/Skeleton/SkeletonDefault.vue";
 defineProps({
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   styleConfig: {
     type: Object,
-    default: () => {}
-  }
+    default: () => {},
+  },
 });
 </script>

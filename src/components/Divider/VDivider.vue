@@ -1,5 +1,5 @@
 <template>
-<ElDivider />
+  <ElDivider />
 </template>
 
 <script setup>

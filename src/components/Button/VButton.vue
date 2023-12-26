@@ -4,7 +4,7 @@
   </ElButton>
   <router-link
     v-else-if="type === 'back'"
-    :to="{name: toName}" 
+    :to="{ name: toName }"
     class="button__link"
   >
     <ArrowLeft class="button__icon" />Back
@@ -14,7 +14,7 @@
 
 <script setup>
 import { ElButton } from "element-plus";
-import { ArrowLeft } from '@element-plus/icons-vue'
+import { ArrowLeft } from "@element-plus/icons-vue";
 import "element-plus/es/components/button/style/css";
 
 defineProps({
@@ -26,8 +26,8 @@ defineProps({
     type: String,
     default: "default",
     validator(value) {
-      return ['default', 'back'].includes(value)
-    }
+      return ["default", "back"].includes(value);
+    },
   },
   toName: {
     type: String,

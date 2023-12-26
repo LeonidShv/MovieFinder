@@ -1,112 +1,112 @@
 export const casesTableConfigurator = [
   {
-    name: 'itemid',
-    label: 'Id',
+    name: "itemid",
+    label: "Id",
     fixed: true,
     width: 100,
-    disabled: true
+    disabled: true,
   },
   {
-    name: 'docname',
-    label: 'Doc name',
+    name: "docname",
+    label: "Doc name",
     fixed: false,
-    width: 180
+    width: 180,
   },
   {
-    name: 'doctypebranch',
-    label: 'Doc type branch',
+    name: "doctypebranch",
+    label: "Doc type branch",
     fixed: false,
-    width: 125
+    width: 125,
   },
   {
-    name: 'ecli',
-    label: 'ECLI',
+    name: "ecli",
+    label: "ECLI",
     fixed: false,
-    width: 180
+    width: 180,
   },
   {
-    name: 'importance',
-    label: 'Importance',
+    name: "importance",
+    label: "Importance",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'applicability',
-    label: 'Applicability',
+    name: "applicability",
+    label: "Applicability",
     fixed: false,
-    width: 105
+    width: 105,
   },
   {
-    name: 'appno',
-    label: 'App №',
+    name: "appno",
+    label: "App №",
     fixed: false,
-    width: 160
+    width: 160,
   },
   {
-    name: 'decisiondate',
-    label: 'Decision date',
+    name: "decisiondate",
+    label: "Decision date",
     fixed: false,
-    width: 105
+    width: 105,
   },
   {
-    name: 'introductiondate',
-    label: 'Introduction date',
+    name: "introductiondate",
+    label: "Introduction date",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'judgementdate',
-    label: 'Judgement date',
+    name: "judgementdate",
+    label: "Judgement date",
     fixed: false,
-    width: 180
+    width: 180,
   },
   {
-    name: 'kpdate',
-    label: 'Kp date',
+    name: "kpdate",
+    label: "Kp date",
     fixed: false,
-    width: 180
+    width: 180,
   },
   {
-    name: 'languageisocode',
-    label: 'Language',
+    name: "languageisocode",
+    label: "Language",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'originatingbody_name',
-    label: 'Originating body name',
+    name: "originatingbody_name",
+    label: "Originating body name",
     fixed: false,
-    width: 120
+    width: 120,
   },
   {
-    name: 'originatingbody_type',
-    label: 'Originating body type',
+    name: "originatingbody_type",
+    label: "Originating body type",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'rank',
-    label: 'Rank',
+    name: "rank",
+    label: "Rank",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'respondent',
-    label: 'Respondent',
+    name: "respondent",
+    label: "Respondent",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'separateopinion',
-    label: 'Separate opinion',
+    name: "separateopinion",
+    label: "Separate opinion",
     fixed: false,
-    width: 100
+    width: 100,
   },
   {
-    name: 'typedescription',
-    label: 'Type description',
+    name: "typedescription",
+    label: "Type description",
     fixed: false,
-    width: 100
+    width: 100,
   },
   // {
   //   name: 'judgment',
@@ -116,15 +116,26 @@ export const casesTableConfigurator = [
   //   hidden: true
   // },
   {
-    name: 'parties',
-    label: 'Parties',
+    name: "parties",
+    label: "Parties",
     fixed: false,
-    width: 180
-  }
-]
+    width: 180,
+  },
+];
 
 export const optionsCasesListSelect = casesTableConfigurator.map(
-  ({ name, label, disabled }) => ({ value: name, label, disabled })
-)
+  ({ name, label, disabled }) => ({ value: name, label, disabled }),
+);
 
-export const tableDefaultConfigurator = ['itemid', 'docname', 'doctypebranch', 'importance', 'rank', 'judgementdate', 'languageisocode', 'parties', 'respondent', 'separateopinion']
+export const tableDefaultConfigurator = [
+  "itemid",
+  "docname",
+  "doctypebranch",
+  "importance",
+  "rank",
+  "judgementdate",
+  "languageisocode",
+  "parties",
+  "respondent",
+  "separateopinion",
+];

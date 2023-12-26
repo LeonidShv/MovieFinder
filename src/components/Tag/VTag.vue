@@ -1,5 +1,5 @@
 <template>
-<ElTag size="large">{{ text }}</ElTag>
+  <ElTag size="large">{{ text }}</ElTag>
 </template>
 
 <script setup>
@@ -9,7 +9,7 @@ import "element-plus/es/components/tag/style/css";
 defineProps({
   text: {
     type: String,
-    default: ''
-  }
+    default: "",
+  },
 });
 </script>

@@ -17,6 +17,6 @@ export const useGlobalStore = defineStore("parties", {
       const response = await api.parties.readParty(id);
 
       this.party = response.data;
-    }
+    },
   },
 });

@@ -1,5 +1,11 @@
 <template>
-  <ElSkeleton class="skeleton__default" :rows="40"  :loading="loading" animated :style="styleConfig">
+  <ElSkeleton
+    class="skeleton__default"
+    :rows="40"
+    :loading="loading"
+    animated
+    :style="styleConfig"
+  >
   </ElSkeleton>
 </template>
 
@@ -17,13 +23,13 @@ const props = defineProps({
   },
   styleConfig: {
     type: Object,
-    default: {}
-  }
+    default: {},
+  },
 });
 
 onMounted(() => {
   console.log(props.loading, props.styleConfig);
-})
+});
 </script>
 
 <style scoped lang="scss">

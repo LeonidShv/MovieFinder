@@ -17,56 +17,55 @@
 
 <script setup>
 import { RouterView } from "vue-router";
-import { ref, watch } from 'vue'
+import { ref, watch } from "vue";
 import { Sunny, Moon } from "@element-plus/icons-vue";
 import VNavigation from "@/components/Navigation/VNavigation.vue";
 import VSwitch from "@/components/Switch/VSwitch.vue";
 
-
 const navigation = ref([
   {
-    name: 'information',
-    icon: '',
-    path: '/',
-    label: 'Information'
+    name: "information",
+    icon: "",
+    path: "/",
+    label: "Information",
   },
   {
-    name: 'cases',
-    icon: '',
-    path: '/cases',
-    label: 'Cases'
+    name: "cases",
+    icon: "",
+    path: "/cases",
+    label: "Cases",
   },
   {
-    name: 'conclusions',
-    icon: '',
-    path: '/conclusions',
-    label: 'Conclusions',
-    disabled: true
+    name: "conclusions",
+    icon: "",
+    path: "/conclusions",
+    label: "Conclusions",
+    disabled: true,
   },
   {
-    name: 'parties',
-    icon: '',
-    path: '/parties',
-    label: 'Parties',
-    disabled: true
+    name: "parties",
+    icon: "",
+    path: "/parties",
+    label: "Parties",
+    disabled: true,
   },
   {
-    name: 'representatives',
-    icon: '',
-    path: '/representatives',
-    label: 'Representatives',
-    disabled: true
+    name: "representatives",
+    icon: "",
+    path: "/representatives",
+    label: "Representatives",
+    disabled: true,
   },
   {
-    name: 'scl',
-    icon: '',
-    path: '/scl',
-    label: 'SCL',
-    disabled: true
-  }
-])
+    name: "scl",
+    icon: "",
+    path: "/scl",
+    label: "SCL",
+    disabled: true,
+  },
+]);
 
-const isDark = ref(true)
+const isDark = ref(true);
 
 function onchange(value) {
   isDark.value = value;

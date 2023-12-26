@@ -6,12 +6,12 @@ const router = createRouter({
     {
       path: "/",
       name: "information",
-      component: () => import("@/pages/Information/InformationPage.vue")
+      component: () => import("@/pages/Information/InformationPage.vue"),
     },
     {
       path: "/cases",
       name: "cases",
-      component: () => import("@/pages/Cases/CasesPage.vue")
+      component: () => import("@/pages/Cases/CasesPage.vue"),
     },
     {
       path: "/case/:id",
@@ -21,31 +21,32 @@ const router = createRouter({
       children: [
         {
           // when /case/:id/docs is matched
-          path: '',
-          component: () => import("@/pages/Cases/subPages/CaseIdPage.vue"), 
-          name: 'CaseId',
+          path: "",
+          component: () => import("@/pages/Cases/subPages/CaseIdPage.vue"),
+          name: "CaseId",
           props: true,
         },
         {
           // when /case/:id/docs is matched
-          path: 'docs',
-          component: () => import("@/pages/Cases/subPages/CaseIdDocsPage.vue"), 
-          name: 'caseIdDocs',
+          path: "docs",
+          component: () => import("@/pages/Cases/subPages/CaseIdDocsPage.vue"),
+          name: "caseIdDocs",
           props: true,
         },
         {
           // when /case/:id/cited-apps is matched
-          path: 'cited-apps',
-          component: () => import("@/pages/Cases/subPages/CaseIdCitedAppsPage.vue"), 
-          name: 'caseIdCitedApps',
+          path: "cited-apps",
+          component: () =>
+            import("@/pages/Cases/subPages/CaseIdCitedAppsPage.vue"),
+          name: "caseIdCitedApps",
           props: true,
         },
-      ]
+      ],
     },
     {
       path: "/conclusions",
       name: "conclusions",
-      component: () => import("@/pages/Conclusions/ConclusionsPage.vue")
+      component: () => import("@/pages/Conclusions/ConclusionsPage.vue"),
     },
     {
       path: "/parties",
@@ -56,7 +57,8 @@ const router = createRouter({
     {
       path: "/representatives",
       name: "representatives",
-      component: () => import("@/pages/Representatives/RepresentativesPage.vue"),
+      component: () =>
+        import("@/pages/Representatives/RepresentativesPage.vue"),
       props: true,
     },
     {

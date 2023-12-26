@@ -17,6 +17,6 @@ export const useGlobalStore = defineStore("information", {
       const response = await api.information.readInformationVersion();
 
       this.version = response.data;
-    }
-  }
+    },
+  },
 });

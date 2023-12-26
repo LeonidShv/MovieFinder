@@ -3,7 +3,7 @@ import api from "@/api";
 export const useGlobalStore = defineStore("scl", {
   state: () => ({
     sclList: [],
-    scl: {}
+    scl: {},
   }),
   getters: {},
   actions: {
@@ -17,6 +17,6 @@ export const useGlobalStore = defineStore("scl", {
       const response = await api.scl.readScl(id);
 
       this.scl = response.data;
-    }
+    },
   },
 });

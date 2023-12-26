@@ -1,47 +1,47 @@
 <template>
   <section>
-      <h1>Cited Apps</h1>
+    <h1>Cited Apps</h1>
 
-      <div class="d-flex gap-16 m-t-24">
-        <VTag 
-          v-for="(citedApp, i) in store.caseCitedApps"
-          :key="i"
-          :text="citedApp"
-         />
-      </div>
+    <div class="d-flex gap-16 m-t-24">
+      <VTag
+        v-for="(citedApp, i) in store.caseCitedApps"
+        :key="i"
+        :text="citedApp"
+      />
+    </div>
   </section>
 </template>
 
 <script setup>
-import { toRefs, ref, onMounted } from 'vue'
-import { useGlobalStore } from '@/stores/cases'
-import VTag from '@/components/Tag/VTag.vue'
+import { toRefs, ref, onMounted } from "vue";
+import { useGlobalStore } from "@/stores/cases";
+import VTag from "@/components/Tag/VTag.vue";
 
 const props = defineProps({
   id: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const store = useGlobalStore()
-const { id } = toRefs(props)
-const isLoading = ref(false)
-const isError = ref(false)
+const store = useGlobalStore();
+const { id } = toRefs(props);
+const isLoading = ref(false);
+const isError = ref(false);
 
 onMounted(async () => {
   try {
-    isLoading.value = true
-    await store.getCaseCitedapps(id.value)
+    isLoading.value = true;
+    await store.getCaseCitedapps(id.value);
   } catch (e) {
-    isError.value = true
+    isError.value = true;
   } finally {
-    isLoading.value = false
-    isError.value = !Object.keys(store.caseCitedApps).length
+    isLoading.value = false;
+    isError.value = !Object.keys(store.caseCitedApps).length;
 
     console.log(store.caseCitedApps);
   }
-})
+});
 </script>
 
 <style scoped>

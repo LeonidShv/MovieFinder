@@ -3,7 +3,7 @@ import api from "@/api";
 export const useGlobalStore = defineStore("conclusions", {
   state: () => ({
     conclusionsList: [],
-    conclusion: {}
+    conclusion: {},
   }),
   getters: {},
   actions: {
@@ -17,6 +17,6 @@ export const useGlobalStore = defineStore("conclusions", {
       const response = await api.conclusions.readConclusion(id);
 
       this.conclusion = response.data;
-    }
+    },
   },
 });

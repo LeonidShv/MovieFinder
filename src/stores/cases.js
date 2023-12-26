@@ -7,9 +7,9 @@ export const useGlobalStore = defineStore("cases", {
     caseDocsList: [],
     caseDocsDoctype: {
       judgment: null,
-      parsed_judgment: null
+      parsed_judgment: null,
     },
-    caseCitedApps: []
+    caseCitedApps: [],
   }),
   getters: {},
   actions: {
@@ -42,6 +42,6 @@ export const useGlobalStore = defineStore("cases", {
       const response = await api.cases.readCaseCitedapps(id);
 
       this.caseCitedApps = response.data;
-    }
+    },
   },
 });

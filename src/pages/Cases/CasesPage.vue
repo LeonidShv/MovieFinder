@@ -30,93 +30,93 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useGlobalStore } from '@/stores/cases'
+import { ref, onMounted, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useGlobalStore } from "@/stores/cases";
 import {
   casesTableConfigurator,
   optionsCasesListSelect,
-  tableDefaultConfigurator
-} from '@/pages/Cases/constants'
-import { getReadyTableData } from '@/helpers'
-import VError from '@/components/VError/index.vue'
-import VSkeleton from '@/components/Skeleton/VSkeleton.vue'
-import VTable from '@/components/Table/VTable.vue'
-import VSelect from '@/components/Select/VSelect.vue'
-import VButton from '@/components/Button/VButton.vue'
-import VPagination from '@/components/Pagination/VPagination.vue'
+  tableDefaultConfigurator,
+} from "@/pages/Cases/constants";
+import { getReadyTableData } from "@/helpers";
+import VError from "@/components/VError/index.vue";
+import VSkeleton from "@/components/Skeleton/VSkeleton.vue";
+import VTable from "@/components/Table/VTable.vue";
+import VSelect from "@/components/Select/VSelect.vue";
+import VButton from "@/components/Button/VButton.vue";
+import VPagination from "@/components/Pagination/VPagination.vue";
 
 const props = defineProps({
   id: {
     type: String,
-    default: '1'
-  }
-})
+    default: "1",
+  },
+});
 
-const store = useGlobalStore()
-const isLoading = ref(false)
-const isError = ref(false)
-const currentPage = ref(1)
+const store = useGlobalStore();
+const isLoading = ref(false);
+const isError = ref(false);
+const currentPage = ref(1);
 const styleTable = {
-  'max-width': 'calc(100vw - 312px)',
-  'width': 'min-content',
-  height: 'calc(100vh - 284px)'
-}
+  "max-width": "calc(100vw - 312px)",
+  width: "min-content",
+  height: "calc(100vh - 284px)",
+};
 const styleSkeleton = {
-  height: 'calc(100vh - 284px)'
-}
+  height: "calc(100vh - 284px)",
+};
 
 function changePageNumber(pageNumber) {
-  currentPage.value = pageNumber
+  currentPage.value = pageNumber;
 }
 
-const router = useRouter()
+const router = useRouter();
 
-function handleRowClick({itemid}) {
-  router.push({ name: 'CaseIdWrapper', params: { id: itemid } })
+function handleRowClick({ itemid }) {
+  router.push({ name: "CaseIdWrapper", params: { id: itemid } });
 }
 
 onMounted(async () => {
-  const page = 1
-  const limit = 10
+  const page = 1;
+  const limit = 10;
 
   try {
-    isLoading.value = true
+    isLoading.value = true;
     console.log(isLoading.value);
-    await store.getCasesList(page, limit)
+    await store.getCasesList(page, limit);
   } catch (e) {
-    isError.value = true
+    isError.value = true;
   } finally {
-    isLoading.value = false
-    isError.value = !store.casesList.length
+    isLoading.value = false;
+    isError.value = !store.casesList.length;
   }
 
   console.log(isLoading.value);
-})
+});
 
 function changeCasesConfigurator(casesConfigurator) {
-  localStorage.setItem('selectedCasesConfigurator', casesConfigurator)
+  localStorage.setItem("selectedCasesConfigurator", casesConfigurator);
 }
 
 function resetTableConfiguration() {
-  selectedCasesConfigurator.value = tableDefaultConfigurator
-  changeCasesConfigurator(tableDefaultConfigurator)
+  selectedCasesConfigurator.value = tableDefaultConfigurator;
+  changeCasesConfigurator(tableDefaultConfigurator);
 }
 
 const savedCasesConfigurator = ref(
-  localStorage.getItem('selectedCasesConfigurator')?.split(',')
-)
+  localStorage.getItem("selectedCasesConfigurator")?.split(","),
+);
 const selectedCasesConfigurator = ref(
-  savedCasesConfigurator.value || tableDefaultConfigurator
-)
+  savedCasesConfigurator.value || tableDefaultConfigurator,
+);
 
 const configuredCasesList = computed(() => {
   return casesTableConfigurator.filter(({ name }) =>
-    selectedCasesConfigurator.value.includes(name)
-  )
-})
+    selectedCasesConfigurator.value.includes(name),
+  );
+});
 
 const tableDataCasesList = computed(() =>
-  getReadyTableData(store.casesList, configuredCasesList.value)
-)
+  getReadyTableData(store.casesList, configuredCasesList.value),
+);
 </script>

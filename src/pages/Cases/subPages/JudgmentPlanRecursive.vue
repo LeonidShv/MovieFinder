@@ -10,31 +10,31 @@
   </div>
 
   <JudgmentPlanRecursive
-      v-for="(element, i) in data.elements"
-      :key="i"
-      :data="element" 
-    />
+    v-for="(element, i) in data.elements"
+    :key="i"
+    :data="element"
+  />
 </template>
 
 <script setup>
 const props = defineProps({
   data: {
     type: Object,
-    default: () => {}
+    default: () => {},
   },
   index: {
     type: Number,
-    default: 0
-  }
-})
+    default: 0,
+  },
+});
 
 function scrollTo(elementId) {
   const element = document.getElementById(elementId);
 
   if (element) {
     element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
+      behavior: "smooth",
+      block: "start",
     });
   }
 }

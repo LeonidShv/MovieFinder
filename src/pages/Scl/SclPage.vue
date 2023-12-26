@@ -31,68 +31,66 @@
 </template>
 
 <script setup>
-import { toRefs, ref, onMounted, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useGlobalStore } from '@/stores/scl'
+import { toRefs, ref, onMounted, computed } from "vue";
+import { useRouter } from "vue-router";
+import { useGlobalStore } from "@/stores/scl";
 import {
   casesTableConfigurator,
   optionsCasesListSelect,
-  tableDefaultConfigurator
-} from '@/pages/Cases/constants'
-import { getReadyTableData } from '@/helpers'
-import VError from '@/components/VError/index.vue'
-import VSkeleton from '@/components/Skeleton/VSkeleton.vue'
-import VTable from '@/components/Table/VTable.vue'
-import VSelect from '@/components/Select/VSelect.vue'
-import VButton from '@/components/Button/VButton.vue'
-import VPagination from '@/components/Pagination/VPagination.vue'
+  tableDefaultConfigurator,
+} from "@/pages/Cases/constants";
+import { getReadyTableData } from "@/helpers";
+import VError from "@/components/VError/index.vue";
+import VSkeleton from "@/components/Skeleton/VSkeleton.vue";
+import VTable from "@/components/Table/VTable.vue";
+import VSelect from "@/components/Select/VSelect.vue";
+import VButton from "@/components/Button/VButton.vue";
+import VPagination from "@/components/Pagination/VPagination.vue";
 
 const props = defineProps({
   id: {
     type: String,
-    default: '1'
-  }
-})
+    default: "1",
+  },
+});
 
-const store = useGlobalStore()
+const store = useGlobalStore();
 // const { id } = toRefs(props)
-const isLoading = ref(false)
-const isError = ref(false)
-const currentPage = ref(1)
+const isLoading = ref(false);
+const isError = ref(false);
+const currentPage = ref(1);
 const styleTable = {
-  'max-width': 'calc(100vw - 312px)',
-  'width': 'min-content',
-  height: 'calc(100vh - 284px)'
-}
+  "max-width": "calc(100vw - 312px)",
+  width: "min-content",
+  height: "calc(100vh - 284px)",
+};
 
 function changePageNumber(pageNumber) {
-  currentPage.value = pageNumber
+  currentPage.value = pageNumber;
 }
 
-const router = useRouter()
+const router = useRouter();
 
-function handleRowClick({itemid}) {
+function handleRowClick({ itemid }) {
   console.log(itemid);
-  router.push({ name: 'CaseIdWrapper', params: { id: itemid } })
+  router.push({ name: "CaseIdWrapper", params: { id: itemid } });
 }
 
 onMounted(async () => {
-  const page = 1
-  const limit = 10
+  const page = 1;
+  const limit = 10;
 
   try {
-    isLoading.value = true
-    await store.getSclList(page, limit)
+    isLoading.value = true;
+    await store.getSclList(page, limit);
   } catch (e) {
-    isError.value = true
+    isError.value = true;
   } finally {
     console.log(store.sclList);
-    isLoading.value = false
-    isError.value = !store.sclList.length
-
-    
+    isLoading.value = false;
+    isError.value = !store.sclList.length;
   }
-})
+});
 
 // function changeCasesConfigurator(casesConfigurator) {
 //   localStorage.setItem('selectedCasesConfigurator', casesConfigurator)

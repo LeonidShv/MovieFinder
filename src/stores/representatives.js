@@ -3,12 +3,15 @@ import api from "@/api";
 export const useGlobalStore = defineStore("representatives", {
   state: () => ({
     representativesList: [],
-    representative: {}
+    representative: {},
   }),
   getters: {},
   actions: {
     async getRepresentativesList(page, limit) {
-      const response = await api.representatives.readRepresentativesList(page, limit);
+      const response = await api.representatives.readRepresentativesList(
+        page,
+        limit,
+      );
 
       this.representativesList = response.data;
     },
@@ -17,6 +20,6 @@ export const useGlobalStore = defineStore("representatives", {
       const response = await api.representatives.readRepresentative(id);
 
       this.representative = response.data;
-    }
+    },
   },
 });

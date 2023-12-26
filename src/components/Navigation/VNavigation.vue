@@ -9,8 +9,8 @@
     :default-active="loadedUrl"
     :mode="mode"
   >
-    <el-menu-item 
-      v-for="({disabled, icon, path, label}, i) in navigation"
+    <el-menu-item
+      v-for="({ disabled, icon, path, label }, i) in navigation"
       :key="i"
       :index="path"
       :disabled="disabled"
@@ -22,15 +22,13 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-import { ElMenu, ElIcon, ElMenuItem } from 'element-plus'
+import { ref, watch } from "vue";
+import { ElMenu, ElIcon, ElMenuItem } from "element-plus";
 
-import {
-  Menu as IconMenu,
-} from '@element-plus/icons-vue'
+import { Menu as IconMenu } from "@element-plus/icons-vue";
 
-import 'element-plus/es/components/menu/style/css'
-import 'element-plus/es/components/menu-item/style/css'
+import "element-plus/es/components/menu/style/css";
+import "element-plus/es/components/menu-item/style/css";
 
 defineProps({
   navigation: {
@@ -39,20 +37,19 @@ defineProps({
   },
   mode: {
     type: String,
-    default: ''
-  }
+    default: "",
+  },
 });
 
-const url = window.location.href?.split('/')
-const loadedUrl = ref(`/${url[url.length - 1]}`)
+const url = window.location.href?.split("/");
+const loadedUrl = ref(`/${url[url.length - 1]}`);
 
-
-const isDark = ref(true)
+const isDark = ref(true);
 
 watch(isDark, (newIsDark) => {
-  const className = newIsDark ? 'dark' : 'light'
-  document.querySelector('html').setAttribute('class', className)
-})
+  const className = newIsDark ? "dark" : "light";
+  document.querySelector("html").setAttribute("class", className);
+});
 </script>
 
 <style lang="scss" scoped>

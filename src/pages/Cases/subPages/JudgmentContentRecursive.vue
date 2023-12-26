@@ -20,16 +20,16 @@
 </template>
 
 <script setup>
-import VDivider from '@/components/Divider/VDivider.vue'
+import VDivider from "@/components/Divider/VDivider.vue";
 
 const props = defineProps({
   data: {
     type: Object,
-    default: () => {}
+    default: () => {},
   },
   index: {
     type: Number,
-    default: 0
-  }
-})
+    default: 0,
+  },
+});
 </script>
